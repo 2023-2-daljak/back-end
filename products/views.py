@@ -24,7 +24,7 @@ class HomeView(ListView):
 def all_products(request):
     page = request.GET.get("page")
     all_product = models.Product.objects.all()
-    paginator = Paginator(all_product, 2)
+    paginator = Paginator(all_product, 5)
     products = paginator.get_page(page)
     print(products)
     return render(request, "products/products.html", context={"potato": products})
