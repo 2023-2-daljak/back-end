@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/132c10257e.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     {% extends "base.html" %} {% block content%} {% load static %}
@@ -56,10 +60,7 @@
                     </li>
                 {% endfor %}
             </ul>
-
-            
         </div>
-
          <h1>기타</h1>
              <div class="modal__filter">
             <ul class="modal__list">
@@ -72,9 +73,7 @@
                        
                     </li>
                 {% endfor %}
-            </ul>
-
-            
+            </ul>  
         </div>
 
         <div class="modal-button">
@@ -85,11 +84,6 @@
           </div>
           </form>
         </div>
-
-
-
-  
- 
       <div class="home">
         <div class="pic-filter">
             <ul>
@@ -156,16 +150,17 @@
 
       <div class="pic-list__list">
         {% for abcd in potato.object_list %}
+        <div>
         <a href="" class="project" target="blank" data-type="new">
           
            <div class="work__icon" >
-            {% if request.user.is_authenticated %}
+            <!-- {% if request.user.is_authenticated %} -->
             <i class="fas fa-heart topHeart "
               data-picture-id="{{ abcd.id }}"></i>
         
-              {% else %}
+              <!-- {% else %} -->
             <i class="fas fa-heart topHeart"></i>
-            {% endif %}
+            <!-- {% endif %} -->
             <i class="far fa-heart fas-2x bottomHeart "
               data-picture-id="{{ abcd.id }}"></i>
             </div>
@@ -175,7 +170,13 @@
             <h3>{{abcd.title}}</h3>
             <span>{{abcd.content}}</span>
           </div>
+         
         </a>  
+        <div class="project__text">
+            <h3>{{abcd.title}}</h3>
+            <span>{{abcd.content}}</span>
+          </div>
+        </div>
         {% endfor %}
       </div>
 
