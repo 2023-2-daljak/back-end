@@ -11,6 +11,7 @@ class Product(Common):
     content = models.TextField(
         null=True,
     )
+    profile = models.ImageField(blank=True)
 
     image = models.ManyToManyField(
         # 이미지를 이미지필드로 할것이냐 manytomany로할것이냐=> 이미지 필드는 여개 선택인 안됨
@@ -30,6 +31,13 @@ class Product(Common):
         blank=True,
         on_delete=models.SET_NULL,
     )
+
+    @property
+    def get_photo_url(self):
+        if self.profile:
+            return self.profile.url
+        else:
+            return "/static/images/user.jpg"
 
     def __str__(self):
         return f"{self.title} / by {self.registrant}"
