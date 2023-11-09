@@ -60,11 +60,10 @@
 }
 
 .pic-filter {
-  display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  margin: 50px;
+  margin: 80px;
 }
 
 .pic-filter__button {
@@ -116,10 +115,9 @@
 } */
 
 .pic-filter__filterbtn {
-  border: 1px solid var(--color-dark-white);
+  border: 1px solid var(--color-black);
   background-color: transparent;
   cursor: pointer;
-
   margin: 0;
   padding: 20px;
   margin-left: 30px;
@@ -132,8 +130,8 @@
 
 .pic-filter__filterbtn.selected,
 .pic-filter__filterbtn:hover {
-  background-color: var(--color-pink);
-  color: var(--color-white);
+  border: 1px solid var(--color-accent);
+  color: var(--color-black);
 }
 
 .pic-filter__filterbtn i {
@@ -283,7 +281,7 @@
   border-radius: 40px;
   border: 0;
 
-  border: 1px solid var(--color-dark-white);
+  border: 1px solid var(--color-black);
 }
 
 .pic__search-placeholder {

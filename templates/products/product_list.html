@@ -14,21 +14,23 @@
     <main>
       <!-- Home -->
       <section id="home">
-        <img
-          class="home__avatar"
-          src="{% static 'imgs/handshake.jpg' %}"
-          alt="Ellie's profile"
-        />
-        <h2 class="home__title">
-          안녕하세요 <br />I&#39;m
-          <strong class="home__title--strong">대학생 외주 사이트</strong>,
-          달작입니다
-        </h2>
-        <p class="home__description">
-          We're 대학생들이 쉽게 외주를 구할수 있게끔 최선을 다하는 사이트입니다
-        </p>
-        <a class="home__contact" href="#contact">Contact Me</a>
-
+        <div class="home__container">
+          <img
+            class="home__avatar"
+            src="{% static 'imgs/handshake.jpg' %}"
+            alt="Ellie's profile"
+          />
+          <h2 class="home__title">
+            안녕하세요 <br />I&#39;m
+            <strong class="home__title--strong">대학생 외주 사이트</strong>,
+            달작입니다
+          </h2>
+          <p class="home__description">
+            We're 대학생들이 쉽게 외주를 구할수 있게끔 최선을 다하는
+            사이트입니다
+          </p>
+          <a class="home__contact" href="#contact">Contact Me</a>
+        </div>
         <div class="custom-shape-divider-bottom-1698908703">
           <svg
             data-name="Layer 1"
@@ -92,27 +94,27 @@
 
           <ul class="categories">
             <li>
-              <button class="category category--selected">
+              <button class="category category--selected" data-category="all">
                 All <span class="category__count">8</span>
               </button>
             </li>
             <li>
-              <button class="category">
+              <button class="category" data-category="it">
                 IT <span class="category__count">3</span>
               </button>
             </li>
             <li>
-              <button class="category">
+              <button class="category" data-category="마케팅">
                 마케팅 <span class="category__count">3</span>
               </button>
             </li>
             <li>
-              <button class="category">
+              <button class="category" data-category="언어">
                 언어 <span class="category__count">2</span>
               </button>
             </li>
             <li>
-              <button class="category">
+              <button class="category" data-category="제작/글쓰기">
                 제작/글쓰기 <span class="category__count">2</span>
               </button>
             </li>
@@ -121,12 +123,9 @@
             <ul class="projects">
               {% for abc in rooms %}
 
-              <li class="project">
+              <li class="project" data-type="{{abc.filter}}">
                 <a href="#" target="_blank">
-                  <img
-                    src="{% static 'imgs/handshake.jpg' %}"
-                    class="project__img"
-                  />
+                  <img src="{{abc.get_photo_url}}" class="project__img" />
                   <div class="project__metadata">
                     <h1 class="project__title">{{abc.title}}</h1>
                     <p>{{abc.content}}</p>
@@ -237,6 +236,24 @@
         <p>ⓒ원광대학교 컴퓨터소프트웨어공학과</p>
       </div>
     </footer>
+
+    <script
+      type="text/javascript"
+      src="{% static 'js/home-transparency.js' %}"
+    ></script>
+    <script type="text/javascript" src="{% static 'js/project.js' %}"></script>
+    <script>
+      const input = document.querySelector(".pic__search-bar");
+      function onSubmit() {
+        console.log(input.value);
+        if (!input.value) {
+          input.style.marginLeft = "10%";
+        } else {
+          console.log("dlskwl");
+          input.classList.add("active");
+        }
+      }
+    </script>
     {% endblock content %}
   </body>
 </html>

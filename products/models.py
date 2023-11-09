@@ -1,12 +1,88 @@
 from django.db import models
 from common.models import Common
+from common import models as core_models
+
+
+class AbstractItem(core_models.Common):
+
+    """ Abstract Item """
+
+    name = models.CharField(max_length=80)
+
+    class Meta:
+        abstract = True
+
+    def __str__(self):
+        return self.name
+
+
+class Department(AbstractItem):
+
+    """ RoomType Model Definition """
+
+    class Meta:
+        verbose_name = "학과"
+
+
+class Species(AbstractItem):
+
+    """ Amenity Model Definition """
+
+    class Meta:
+        verbose_name_plural = "종류"
+
+
+class Grade(AbstractItem):
+
+    """ Facility Model Definition """
+
+    pass
+
+    class Meta:
+        verbose_name_plural = "학년"
+
+
+class Repair(AbstractItem):
+
+    """ HouseRule Model Definition """
+
+    class Meta:
+        verbose_name = "보수"
+
+
+class SearchHistory(models.Model):
+
+    query = models.CharField(max_length=255)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(
+        "users.User", on_delete=models.CASCADE, related_name="ss",  null=True, blank=False
+    )
+    count = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return self.query
 
 
 class Product(Common):
+
+    SEMI_A = "it"
+    SEMI_B = "마케팅"
+    SEMI_C = "언어"
+    SEMI_D = "제작/글쓰기"
+
+    SEMI_CHOICES = (
+        (SEMI_A, "it"),
+        (SEMI_B, "마케팅"),
+        (SEMI_C, "언어"),
+        (SEMI_D, "제작/글쓰기"),
+    )
     registrant = models.ForeignKey(
         "users.User",
         on_delete=models.CASCADE,
     )
+
+    filter = models.CharField(
+        choices=SEMI_CHOICES, default='', max_length=10, blank=False, null=True)
     title = models.CharField(max_length=50, null=True,)
     content = models.TextField(
         null=True,
@@ -31,6 +107,15 @@ class Product(Common):
         blank=True,
         on_delete=models.SET_NULL,
     )
+
+    # 필터
+
+    department = models.ManyToManyField(
+        "Department", related_name="department", blank=True)
+    species = models.ManyToManyField(
+        "Species", related_name="species", blank=True)
+    grade = models.ManyToManyField("Grade", blank=True)
+    repair = models.ManyToManyField("Repair", blank=True)
 
     @property
     def get_photo_url(self):

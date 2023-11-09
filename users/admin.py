@@ -1,38 +1,47 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import User
+from . import models
 
 
 @admin.register(User)
 class customUserAdmin(UserAdmin):
-    fieldsets=(
+    fieldsets = (
         ("Profile",
          {
-            "fields":("username","password",
-                      "email","avatar",
-                      "gender","birth",
-                      "nickname","phone_num",
-                      "location","user_kind"),
-            "classes":("wide",)     
-        },
+             "fields": ("username", "password",
+                        "email", "avatar",
+                        "gender", "birth",
+                        "nickname", "phone_num",
+                        "location", "user_kind"),
+             "classes": ("wide",)
+         },
          ),
         ("Permissions",
          {
-             "fields":(
-                "is_active",
-                "is_staff",
-                "is_superuser",
-                "groups",
-                "user_permissions", 
+             "fields": (
+                 "is_active",
+                 "is_staff",
+                 "is_superuser",
+                 "groups",
+                 "user_permissions",
              ),
-             "classes":("collapse",)
+             "classes": ("collapse",)
          },
          ),
         ("Important Dates",
          {
-          "fields": ("last_login", "date_joined"
-                               ),
-                    "classes" : ("collapse",)
+             "fields": ("last_login", "date_joined"
+                        ),
+             "classes": ("collapse",)
          },
          )
     )
+
+
+@admin.register(models.Like)
+class ItemAdmin(admin.ModelAdmin):
+
+    """ Item Admin Definition """
+
+    pass

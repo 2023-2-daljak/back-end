@@ -48,3 +48,12 @@
   display: flex;
   align-items: center;
 }
+
+.header__toggle {
+  display: none;
+  color: var(--color-white);
+  font-size: 1.5rem;
+  position: absolute;
+  top: 1.3rem;
+  right: 1rem;
+}

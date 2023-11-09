@@ -55,3 +55,7 @@
   max-width: var(--size-max-width);
   margin: auto;
 }
+
+.arrow-up {
+  transition: all 300ms ease;
+}

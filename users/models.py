@@ -9,7 +9,7 @@ class User(AbstractUser):
 
     class UserKindChoices(models.TextChoices):
         CLIENT = ("client", "Client")  # 외주하는 사람들
-        STUDENT = ("student", "Student") #수정 => 대학생들
+        STUDENT = ("student", "Student")  # 수정 => 대학생들
 
     avatar = models.ImageField(
         blank=True,
@@ -38,5 +38,10 @@ class User(AbstractUser):
     location = models.CharField(
         max_length=100,
     )
-    
-    
+
+
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  # 좋아요를 누른 사용자
+    item_id = models.CharField(max_length=100)  # 좋아요한 항목의 ID (예: project1)
+    # 좋아요 상태 (True: 좋아요, False: 좋아요 취소)
+    is_liked = models.BooleanField(default=True)
