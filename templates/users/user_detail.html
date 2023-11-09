@@ -1,0 +1,13 @@
+{% include "base.html" %} {% load static %} {% include 'partials/nav.html' %}
+<div class="profile">
+  <div class="profile__content">
+    <div class="profile-left">
+      <div class="profile__info">
+        ◽ 이름: <span>{{user_obj.username}}</span>
+      </div>
+      <div class="profile__info">
+        ◽ 이메일: <span>{{user_obj.email}}</span>
+      </div>
+    </div>
+  </div>
+</div>

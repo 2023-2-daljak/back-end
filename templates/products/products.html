@@ -4,19 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script
+     <script
       src="https://kit.fontawesome.com/132c10257e.js"
       crossorigin="anonymous"
     ></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   </head>
   <body>
     {% extends "base.html" %} {% block content%} {% load static %}
     <div class="modal hidden">
           <button id="close-btn"><ion-icon class="icon" size="large" name="close-outline"></ion-icon></button>
-          <form method="GET">
+          <form method="GET" action="{% url 'product:search' %}">
             
           <div class="modal__content">
-                <h1>형태</h1>
+                <h1>종류별</h1>
              <div class="modal__filter">
             
             <ul class="modal__list">
@@ -31,7 +33,7 @@
             </ul>
         </div>
 
-        <h1>관념별</h1>
+        <h1>학과별</h1>
              <div class="modal__filter">
             <ul class="modal__list">
                 {% for pot in mind %}
@@ -47,7 +49,7 @@
             </ul>
         </div>
 
-         <h1>색깔</h1>
+         <h1>학년별</h1>
              <div class="modal__filter">
             <ul class="modal__list">
                 {% for pot in color %}
@@ -61,7 +63,7 @@
                 {% endfor %}
             </ul>
         </div>
-         <h1>기타</h1>
+         <h1>페이</h1>
              <div class="modal__filter">
             <ul class="modal__list">
                 {% for pot in other %}
@@ -84,7 +86,8 @@
           </div>
           </form>
         </div>
-      <div class="home">
+      <div class="home" style="display: flex;
+    flex-direction: column;">
         <div class="pic-filter">
             <ul>
         {% for item in abc %}
@@ -92,61 +95,12 @@
        {% endfor %}
       </ul>
  
-         <div class="pic-filter__slide showing">
-          <div class="pic-filter__sort">
-           
-           <ul class="pic-filter__ul">
-              <i class="fas fa-sort"></i>
-              <li class="pic-filter__pop">인기검색어:
-                <ul class="dropdown">
-
-             {% for his in history %}
-
-             {% if his.user == user %}
-        <!-- 사용자에게만 보여지는 리스트 아이템 -->
-   
-              <button class="pic-filter__button " data-filter="new" data-query="{{ his.query }}">
-                      <div class="pic-filter__btn-text">
-                          {{ his.query }}
-                      </div>
-                    </button> 
-              {% endif %}
-              
-             {% endfor %}
-
-<!-- 
-                  {% for his in history %}
-
-             {% if his.user == user %}
-        사용자에게만 보여지는 리스트 아이템
-   
-              <button class="pic-filter__button " data-filter="new" data-query="{{ his.query }}">
-                      <div class="pic-filter__btn-text">
-                          {{ his.query }}
-                      </div>
-                    </button> 
-              {% endif %}
-              
-             {% endfor %} -->
-                </ul>
-              </li>
-             
-            </ul>
-            
-          </div>
-          
-             
-          </div>
-
          
 
            <button class="pic-filter__filterbtn">   
               <i class="fas fa-bars">필터</i></button>
-
         </div>
 
-        
-    
 
       <div class="pic-list__list">
         {% for abcd in potato.object_list %}
@@ -198,8 +152,8 @@
 
 
       <div>
-          <form method="get"  class="picture__search">
-           {% if user.is_authenticated %}
+          <form method="get" action="{% url 'product:search' %}"  class="picture__search">
+         
             <div class="pic__search-box">
                 <input name="city" placeholder="" class="pic__search-bar " value="{{city}}" onchange="onSubmit()">
                 <div class="pic__search-placeholder">
@@ -209,7 +163,7 @@
                 
             </div>
             <!-- 글 작성 버튼은 관리자만 보이도록 해주세요 -->
-               {% endif %}
+          
         </form>
       </div>
 
@@ -217,9 +171,67 @@
   
 
     
-     <button class="arrow-button">
-      <i class="fas fa-arrow-up"></i>
-    </button>
+    <!-- Arrow up -->
+      <aside>
+        <a class="arrow-up" href="#home" title="back to top">
+          <i class="fab fa-facebook-messenger"></i>
+        </a>
+      </aside>
+
+
+      <footer id="contact" class="section">
+      <div class="max-container">
+        <h2 class="title">Let&#39;s talk</h2>
+        <p class="description">donghe1472@gmail.com</p>
+        <ul class="contact__links">
+          <li>
+            <a
+              class="contact__link"
+              href="https://github.com/dream-ellie"
+              target="_blank"
+              title="my github link"
+            >
+              <i class="fa-brands fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              class="contact__link"
+              href="https://github.com/dream-ellie"
+              target="_blank"
+              title="my linkedin link"
+            >
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+          </li>
+        </ul>
+        <p>ⓒ원광대학교 컴퓨터소프트웨어공학과</p>
+      </div>
+    </footer>
+
+     <script type="text/javascript" src="{% static 'js/arrow-sec.js' %}"></script>
+   
+   <script type="text/javascript" src="{% static 'js/arrowup.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/slide.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/pic-filter.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/modal.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/search.js' %}"></script>
+     <script type="text/javascript" src="{% static 'js/pic-fav.js' %}"></script>
+    <script>  
+      const input = document.querySelector(".pic__search-bar");
+      function onSubmit() {
+        console.log(input.value);
+      if(!input.value) {
+        input.style.marginLeft = "10%";
+      }
+
+      else{
+        console.log("dlskwl");
+        input.classList.add("active");
+      }
+}
+
+    </script>
     {% endblock content %}
 
 </html>

@@ -201,11 +201,12 @@
 }
 
 .work__icon:hover {
-  transform: rotate(5%);
+  transform: rotate(5deg);
 }
 
 .work__icon i {
   font-size: 30px;
+  color: red;
 }
 
 .work__icon {

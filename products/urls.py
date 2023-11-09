@@ -9,6 +9,8 @@ app_name = "product"
 urlpatterns = [
     path("", views.HomeView.as_view(), name="home"),
     path("products", products_view.all_products, name="product_list"),
+    path("search/", products_view.search, name="search"),
+
 ]
 
 
