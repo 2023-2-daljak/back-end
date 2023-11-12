@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+  {% extends "base.html" %} {% block content%}  
+  {% load static %}
   <head>
+    <link rel="stylesheet" href="{% static 'csss/styles.css' %}" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
@@ -12,7 +15,7 @@
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   </head>
   <body>
-    {% extends "base.html" %} {% block content%} {% load static %}
+    
     <div class="modal hidden">
           <button id="close-btn"><ion-icon class="icon" size="large" name="close-outline"></ion-icon></button>
           <form method="GET" action="{% url 'product:search' %}">
@@ -95,8 +98,6 @@
        {% endfor %}
       </ul>
  
-         
-
            <button class="pic-filter__filterbtn">   
               <i class="fas fa-bars">필터</i></button>
         </div>
@@ -108,7 +109,7 @@
         <a href="{% url 'product:detail' pk=abcd.pk %}"  class="project" target="blank" data-type="new">
           <img src="{{abcd.get_photo_url}}" class="project__img" />
           <div class="project__description">
-            <h3>{{abcd.title}}</h3>
+            <h3 class="text-3xl">{{abcd.title}}</h3>
             <span>{{abcd.content}}</span>
           </div>
          
@@ -168,8 +169,8 @@
 
       <footer id="contact" class="section">
       <div class="max-container">
-        <h2 class="title">Let&#39;s talk</h2>
-        <p class="description">donghe1472@gmail.com</p>
+        <h2 class="title text-2xl">Let&#39;s talk</h2>
+        <p class="description text-4xl">donghe1472@gmail.com</p>
         <ul class="contact__links">
           <li>
             <a
@@ -192,7 +193,7 @@
             </a>
           </li>
         </ul>
-        <p>ⓒ원광대학교 컴퓨터소프트웨어공학과</p>
+        <p class="text-3xl">ⓒ원광대학교 컴퓨터소프트웨어공학과</p>
       </div>
     </footer>
 
@@ -218,7 +219,7 @@
       }
 }
 
-      document.querySelectorAll(".project").forEach(function(element) {
+    document.querySelectorAll(".project").forEach(function(element) {
     console.log("Click event registered for element:", element);
     element.addEventListener("click", function() {
         console.log("Clicked!");

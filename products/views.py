@@ -98,3 +98,4 @@ def search(request):
 
 class ProductDetail(DetailView):
     model = models.Product
+    context_object_name = "product"

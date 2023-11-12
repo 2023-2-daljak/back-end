@@ -42,8 +42,10 @@ CUSTOM_APPS = [
     "product_categories.apps.ProductCategoriesConfig",
     "common.apps.CommonConfig",
     "lists.apps.ListsConfig",
-
+    'tailwind',
     'rest_framework',
+
+
 ]
 
 SYSTEM_APPS = [
@@ -65,9 +67,13 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+
 ]
 
 ROOT_URLCONF = "config.urls"
+
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 TEMPLATES = [
     {
@@ -166,3 +172,9 @@ EMAIL_USE_TLS = 'daljak@naver.com'
 
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+TAILWIND_APP_NAME = 'theme'
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]

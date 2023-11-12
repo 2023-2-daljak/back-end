@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>{% block page_title %}{% endblock page_title %}| Daljak</title>
     {% load static %}
+
+    <link rel="stylesheet" href="{% static 'csss/styles.css' %}" />
     <link
       type="text/css"
       href="{% static 'css/global.css' %}"
@@ -35,6 +37,12 @@
     <link
       type="text/css"
       href="{% static 'css/about.css' %}"
+      rel="stylesheet"
+    />
+
+    <link
+      type="text/css"
+      href="{% static 'css/detail.css' %}"
       rel="stylesheet"
     />
     <link
