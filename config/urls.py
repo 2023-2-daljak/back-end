@@ -20,6 +20,7 @@ from products import views
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,5 +28,6 @@ urlpatterns = [
     path("baskets/", include("baskets.urls")),
     path("users/", include("users.urls")),
     path("lists/", include("lists.urls")),
+
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
