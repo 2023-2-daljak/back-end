@@ -41,6 +41,8 @@ CUSTOM_APPS = [
     "product_reviews.apps.ProductReviewsConfig",
     "product_categories.apps.ProductCategoriesConfig",
     "common.apps.CommonConfig",
+    "lists.apps.ListsConfig",
+
     'rest_framework',
 ]
 
@@ -148,3 +150,19 @@ AUTH_USER_MODEL = "users.User"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+LOGIN_URL = "/users/login/"
+
+
+EMAIL_HOST = "smtp.naver.com"
+EMAIL_PORT = "587"		 # 서버
+EMAIL_FROM = "달작"
+EMAIL_HOST_USER = 'donghe1472@naver.com'
+EMAIL_HOST_PASSWORD = 'aa878612!'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_USE_TLS = 'daljak@naver.com'
+
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

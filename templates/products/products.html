@@ -105,20 +105,7 @@
       <div class="pic-list__list">
         {% for abcd in potato.object_list %}
         <div>
-        <a href="" class="project" target="blank" data-type="new">
-          
-           <div class="work__icon" >
-            <!-- {% if request.user.is_authenticated %} -->
-            <i class="fas fa-heart topHeart "
-              data-picture-id="{{ abcd.id }}"></i>
-        
-              <!-- {% else %} -->
-            <i class="fas fa-heart topHeart"></i>
-            <!-- {% endif %} -->
-            <i class="far fa-heart fas-2x bottomHeart "
-              data-picture-id="{{ abcd.id }}"></i>
-            </div>
-           
+        <a href="{% url 'product:detail' pk=abcd.pk %}"  class="project" target="blank" data-type="new">
           <img src="{{abcd.get_photo_url}}" class="project__img" />
           <div class="project__description">
             <h3>{{abcd.title}}</h3>
@@ -230,6 +217,14 @@
         input.classList.add("active");
       }
 }
+
+      document.querySelectorAll(".project").forEach(function(element) {
+    console.log("Click event registered for element:", element);
+    element.addEventListener("click", function() {
+        console.log("Clicked!");
+        window.location.href = element.getAttribute("href");
+    });
+});
 
     </script>
     {% endblock content %}
