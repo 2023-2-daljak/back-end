@@ -1,12 +1,8 @@
 {% extends "base.html" %} {% block content%} {% load static %}
-<div class="-mt-5 container max-w-full h-75vh flex mb-20">
-  <div class="h-full w-1/2 bg-center bg-cover"></div>
-  <div class="h-full w-1/2 flex flex-wrap">
-    <img src="{{product.get_photo_url}}" class="project__img" />
-  </div>
-</div>
 
-<div class="container mx-auto flex justify-around pb-56">
+<link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+<div class="container mx-auto columns-1 justify-around pb-56">
+  <img src="{{product.get_photo_url}}" class="project__img" />
   <div class="w-1/2">
     <div class="flex justify-between">
       <div class="mb-5">
@@ -19,17 +15,18 @@
     </div>
     <div class="flex border-section">
       <span class="mr-5 font-light">{{room.room_type}}</span>
+      <span class="mr-5 font-light">
+        {% for department in product.department.all %} {{ department.name }}
+      </span>
+      {% endfor %}
       <span class="mr-5 font-light"
-        >{{room.beds}} bed{{room.beds|pluralize}}</span
+        >{{room.bedrooms}} Species{{room.bedrooms|pluralize}}</span
       >
       <span class="mr-5 font-light"
-        >{{room.bedrooms}} bedroom{{room.bedrooms|pluralize}}</span
+        >{{room.baths}} Grade{{room.baths|pluralize}}</span
       >
       <span class="mr-5 font-light"
-        >{{room.baths}} bath{{room.baths|pluralize}}</span
-      >
-      <span class="mr-5 font-light"
-        >{{room.guests}} guest{{room.guests|pluralize}}</span
+        >{{room.guests}} Repair{{room.guests|pluralize}}</span
       >
     </div>
     <p class="border-section">{{room.description}}</p>

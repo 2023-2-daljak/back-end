@@ -1,0 +1,10 @@
+<form method="POST" class="create" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="create-wrap_second">
+    {% for field in form %} {% include 'mixins/product/product_input.html' with
+    field=field %} {% endfor %}
+  </div>
+  <div class="btn-component create-btn">
+    <button>hlell</button>
+  </div>
+</form>
