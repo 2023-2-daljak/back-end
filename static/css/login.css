@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Lato:wght@100&display=swap");
+
+.login {
+  background-color: #ffffff;
+  border: 1.5px solid rgba(0, 0, 0, 0.2);
+  width: 900px;
+  height: 500px;
+  margin: 150px auto;
+}
+
+.login-content {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-top: 44px;
+  margin: 0;
+}
+
+.login-content__img {
+  width: 50%;
+  height: 100%;
+}
+
+.login-content__form {
+  width: 50%;
+  text-align: center;
+}
+
+.login__title {
+  font-family: DM Serif Display;
+  font-style: normal;
+  font-size: 40px;
+  line-height: 90px;
+  letter-spacing: 0.3px;
+  margin-top: -60px;
+}
+
+.login-content__form form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login__btn,
+.login-content__form input {
+  height: 50px;
+  width: 65%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  transition: all 0.17s ease-in;
+  padding: 10px;
+  background-color: #fafafa;
+}
+
+.login-content__form input:hover {
+  border-color: var(--color-accent);
+}
+
+.login-content__form input:focus {
+  border-color: var(--color-accent);
+  outline: none;
+  box-shadow: 0px 0px 1px 4px#ffedbc;
+}
+
+.login__btn {
+  cursor: pointer;
+  border: none;
+  border-color: var(--color-accent);
+  color: var(--color-black);
+  font-weight: 600;
+  font-size: 16px;
+  background-color: var(--color-accent);
+}
+
+.login__btn:hover {
+  border-color: var(--color-accent);
+}
+
+.login-content__signin {
+  width: 65%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-content__signin a {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+@media screen and (max-width: 1000px) {
+  .login {
+    width: 400px;
+  }
+  .login-content__img {
+    width: 0;
+  }
+  .login-content__form {
+    width: 100%;
+  }
+}
