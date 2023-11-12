@@ -166,3 +166,8 @@ def faq_answer(input):
 #        print("오류 발생:", str(e))
 #        response = "오류가 발생했습니다."
 #        return response
+
+
+
+
+
