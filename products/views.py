@@ -5,7 +5,7 @@ from rest_framework.status import HTTP_204_NO_CONTENT
 from rest_framework.views import APIView
 from django.core.paginator import Paginator
 from .serializers import ProductSerializer
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from . import models
 from datetime import datetime
 from django.shortcuts import render, redirect
@@ -32,7 +32,6 @@ def all_products(request):
     color_s = models.Grade.objects.all()
     other_s = models.Repair.objects.all()
 
-    print(products)
     return render(request, "products/products.html", context={"potato": products,  "mind": mind_s, "color": color_s, "other": other_s, "shape": shapes_s, })
 
 
@@ -94,5 +93,8 @@ def search(request):
 
     query = request.GET.get("query")
 
-    print(picture)
     return render(request, "partials/search.html", {"abc": picture, "mind": mind_s, "color": color_s, "other": other_s, "shape": shapes_s, "city": city, 'query': query})
+
+
+class ProductDetail(DetailView):
+    model = models.Product

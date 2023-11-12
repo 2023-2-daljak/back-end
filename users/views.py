@@ -54,7 +54,7 @@ class SignUpView(FormView):
 
     template_name = "users/signup.html"
     form_class = forms.SignUpForm
-    success_url = reverse_lazy("product:home")
+    success_url = reverse_lazy("user:verify")
 
     def form_valid(self, form):
         form.save()
@@ -63,6 +63,7 @@ class SignUpView(FormView):
         user = authenticate(self.request, username=username, password=password)
         if user is not None:
             login(self.request, user)
+        user.verify_email()
         return super().form_valid(form)
 
 
@@ -70,3 +71,23 @@ class UserProfileView(DetailView):
 
     model = models.User
     context_object_name = "user_obj"
+
+
+def email_verify(request):
+
+    return render(request, "users/email_verify.html")
+
+
+def complete_verification(request, key):
+    try:
+        user = models.User.objects.get(email_secret=key)
+        user.email_confirmed = True
+        user.email_secret = ""
+        user.save()
+        if user is not None:
+            auth.login(request, user)
+        # to do: add succes message
+    except models.User.DoesNotExist:
+        # to do: add error message
+        pass
+    return redirect(reverse("product:home"))

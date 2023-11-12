@@ -1,5 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+import uuid
+from django.conf import settings
 
 
 class User(AbstractUser):
@@ -38,6 +43,28 @@ class User(AbstractUser):
     location = models.CharField(
         max_length=100,
     )
+
+    email_confirmed = models.BooleanField(default=False, verbose_name='이메일인증')
+    email_secret = models.CharField(
+        max_length=120, default="", blank=True, verbose_name='유저이름')
+
+    def verify_email(self):
+        if self.email_confirmed is False:
+            secret = uuid.uuid4().hex[:20]
+            self.email_secret = secret
+            html_message = render_to_string(
+                "emails/verify_email.html", {"secret": secret}
+            )
+            send_mail(
+                "달작 인증번호",
+                strip_tags(html_message),
+                settings.EMAIL_FROM,
+                [self.email],
+                html_message=html_message,
+            )
+
+            self.save()
+        return
 
 
 class Like(models.Model):
