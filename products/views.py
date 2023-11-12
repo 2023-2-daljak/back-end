@@ -9,6 +9,10 @@ from django.views.generic import ListView, DetailView
 from . import models
 from datetime import datetime
 from django.shortcuts import render, redirect
+from users import mixins as user_mixins
+from . import models, forms
+from django.views.generic import ListView, DetailView, View, UpdateView, FormView, DeleteView
+from django.shortcuts import render, redirect, reverse
 
 
 class HomeView(ListView):
@@ -99,3 +103,16 @@ def search(request):
 class ProductDetail(DetailView):
     model = models.Product
     context_object_name = "product"
+
+
+class CreateProductView(user_mixins.LoggedInOnlyView, FormView):
+
+    form_class = forms.CreateProductForm
+    template_name = "products/product_create.html"
+
+    def form_valid(self, form):
+        project = form.save()
+        project.user = self.request.user
+        project.save()
+        # project.success(self.request, "Photo Uploaded")
+        return redirect(reverse("product:product_list"))

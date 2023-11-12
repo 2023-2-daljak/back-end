@@ -79,6 +79,7 @@ class Product(Common):
     registrant = models.ForeignKey(
         "users.User",
         on_delete=models.CASCADE,
+        null=True
     )
 
     filter = models.CharField(
@@ -88,7 +89,6 @@ class Product(Common):
         null=True,
     )
     profile = models.ImageField(blank=True)
-
     image = models.ManyToManyField(
         # 이미지를 이미지필드로 할것이냐 manytomany로할것이냐=> 이미지 필드는 여개 선택인 안됨
         # => m:m으로 하자
@@ -96,7 +96,6 @@ class Product(Common):
         blank=True,
 
     )
-
     price = models.PositiveBigIntegerField(
         null=True,
     )
