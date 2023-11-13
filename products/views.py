@@ -76,7 +76,11 @@ def search(request):
 
     # search_history = None
     # if city:
-    #     search_history = models.SearchHistory(query=city, user=request.user)
+    #     search_his
+    #
+    #
+    #
+    # tory = models.SearchHistory(query=city, user=request.user)
     #     search_history.save()
 
     # if city and request.user.is_authenticated:
