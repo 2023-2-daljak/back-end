@@ -116,3 +116,21 @@ class CreateProductView(user_mixins.LoggedInOnlyView, FormView):
         project.save()
         # project.success(self.request, "Photo Uploaded")
         return redirect(reverse("product:product_list"))
+
+
+class EditProjectView(UpdateView):
+
+    model = models.Product
+    template_name = "product/product_edit.html"
+    fields = (
+        "title",
+        "content",
+        "profile",
+        "department",
+        "species",
+        "grade",
+        "repair",
+    )
+
+    def get_success_url(self):
+        return reverse("core:project_list")
