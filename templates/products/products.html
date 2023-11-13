@@ -104,6 +104,7 @@
 
       <div class="pic-list__list">
         {% for abcd in potato.object_list %}
+        <a class="header__menu__item" href="{% url 'conversations:go' request.user.id abcd.registrant.id  %}">Messages</a>
         <div>
         <a href="" class="project" target="blank" data-type="new">
           
