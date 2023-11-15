@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/132c10257e.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    {% extends "base.html" %} {% block content%} {% load static %}
+    <main>
+      <!-- Home -->
+      <section id="home">
+        <div class="home__container">
+          <img
+            class="home__avatar"
+            src="{% static 'imgs/handshake.jpg' %}"
+            alt="Ellie's profile"
+          />
+          <h2 class="home__title">
+            안녕하세요 <br />I&#39;m
+            <strong class="home__title--strong">대학생 외주 사이트</strong>,
+            달작입니다
+          </h2>
+          <p class="home__description">
+            We're 대학생들이 쉽게 외주를 구할수 있게끔 최선을 다하는
+            사이트입니다
+          </p>
+          <a class="home__contact" href="#contact">Contact Me</a>
+        </div>
+        <div class="custom-shape-divider-bottom-1698908703">
+          <svg
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+              class="shape-fill"
+            ></path>
+          </svg>
+        </div>
+      </section>
+
+      <!-- About -->
+
+      <section id="about" class="section max-container">
+        <h2 class="title">About</h2>
+        <p class="description"></p>
+        <ul class="majors">
+          <li class="major">
+            <i class="fa-solid fa-graduation-cap major__icon"></i>
+            <p class="major__title">대학생</p>
+            <p>전공을 살려 쉬운 용돈벌이를 할수 있습니다</p>
+          </li>
+          <li class="major">
+            <i class="fa-solid fa-building major__icon"></i>
+            <p class="major__title">회사</p>
+            <p>저렴한 인력으로 확실한 외주 작업을 맡길수 있습니다</p>
+          </li>
+          <li class="major">
+            <i class="fa-solid fa-comments major__icon"></i>
+            <p class="major__title">만나서 회의를 할수 있습니다</p>
+            <p>확실한 선택기능으로 만나서 회의를 할수 있습니다</p>
+          </li>
+        </ul>
+        <ul class="jobs">
+          {% comment %} <li class="job">
+            <img src="images/jobs/google.png" alt="google logo" />
+            <div>
+              <p class="job__name">Google as Senior Software Engineer</p>
+              <p class="job__period">2019 Oct - Until now</p>
+            </div>
+          </li>
+          <li class="job">
+            <img src="images/jobs/samsung.png" alt="samsung logo" />
+            <div>
+              <p class="job__name">Samsung as Software Engineer</p>
+              <p class="job__period">2014 Sept - 2019 Oct</p>
+            </div>
+          </li> {% endcomment %}
+        </ul>
+      </section>
+
+      <section></section>
+
+      <section id="work" class="section">
+        <div class="max-container">
+          <h2 class="title">분야</h2>
+
+          <ul class="categories">
+            <li>
+              <button class="category category--selected" data-category="all">
+                All <span class="category__count">8</span>
+              </button>
+            </li>
+            <li>
+              <button class="category" data-category="it">
+                IT <span class="category__count">3</span>
+              </button>
+            </li>
+            <li>
+              <button class="category" data-category="마케팅">
+                마케팅 <span class="category__count">3</span>
+              </button>
+            </li>
+            <li>
+              <button class="category" data-category="언어">
+                언어 <span class="category__count">2</span>
+              </button>
+            </li>
+            <li>
+              <button class="category" data-category="제작/글쓰기">
+                제작/글쓰기 <span class="category__count">2</span>
+              </button>
+            </li>
+          </ul>
+          <div>
+            <ul class="projects">
+              {% for abc in rooms %}
+
+              <li class="project" data-type="{{abc.filter}}">
+                <a href="#" target="_blank">
+                  <img src="{{abc.get_photo_url}}" class="project__img" />
+                  <div class="project__metadata">
+                    <h1 class="project__title">{{abc.title}}</h1>
+                    <p>{{abc.content}}</p>
+                  </div>
+                </a>
+              </li>
+
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Product -->
+
+      <section id="testimonial" class="section max-container">
+        <h2 class="title">How to use?</h2>
+        <p class="description">이렇게 문의해보세요!</p>
+        <ul class="testimonials">
+          <li class="testimonial">
+            <img
+              src="static/imgs/home_bubble_gray.png"
+              alt="people1"
+              class="testimonial__img"
+            />
+            <div class="testimonial__bubble">
+              <p>웹사이트 제작 및 유지보수까지 해드립니다!저에게 다이렉트 메세지를 보내주세요</p>
+              <p>
+                <a href="#" class="testimonial__bubble__name">판매자</a>
+                /원광대학교 컴퓨터소프트웨어공학과 박시은
+              </p>
+            </div>
+          </li>
+          <li class="testimonial">
+            <img
+              src="static/imgs/home_bubble_blue.png"
+              alt="people2"
+              class="testimonial__img"
+            />
+            <div class="testimonial__bubble" id = "testimonial__bubble_w">
+              <p>
+                웹 사이트 구축은 무엇을 사용해서 만들고 제작기간이 얼마나 걸리는지
+                상의해보고 싶습니다. 또한 유지보수 및 전반적인 디자인까지 관리를 받고싶습니다.
+                보수는 협의 후 드리겠습니다. 하실 의향이 있으시다면 저에게 다시 연락주세요!
+                ~~~입니다
+              </p>
+              <p>
+                <a href="#" class="testimonial__bubble__name">판매자</a>
+                /Samsung
+              </p>
+            </div>
+          </li>
+          <li class="testimonial">
+            <img
+              src="static/imgs/home_bubble_gray2.png"
+              alt="people3"
+              class="testimonial__img"
+            />
+            <div class="testimonial__bubble">
+              <p>
+                제작기간은 최소 2주에서 최대 3주 정도 예상됩니다. 저는 웹사이트를 만들때 리액트와 nodejs를사용하며, mysql을 이용해 
+                전반적인 데이터베이스를 관리합니다.유지보수는 제가 졸업할때 까지 1년에 한번은 무료로 해드리고 있습니다. 
+                만약 유지보수의 횟수를 추가하고 싶으시다면 제 페이지의 유지보수 코너를 이용해주세요.그리고 디자인은 기본적인 옵션만 제공을하며
+                전문적인 디자인을 받고 싶으시다면 저에게 원하시는 컬러와 느낌을 말해주세요.
+              </p>
+              <p>
+                <a href="#" class="testimonial__bubble__name">판매자</a>
+                /원광대학교 컴퓨터소프트웨어공학과 이동규
+              </p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Arrow up -->
+      <aside>
+        <a class="arrow-up" href="#home" title="back to top">
+          <i class="fab fa-facebook-messenger"></i>
+        </a>
+      </aside>
+    </main>
+    <!-- Footer -->
+    <footer id="contact" class="section">
+      <div class="max-container">
+        <h2 class="title">Let&#39;s talk</h2>
+        <p class="description">법인명 : DALJAK (달작)</p>
+        <p class="description">주소 : 전라북도 익산시 익산대로 460(원광대학교) </p>
+        <p class="description">donghe1472@gmail.com</p>
+        <ul class="contact__links">
+          <li>
+            <a
+              class="contact__link"
+              href="https://github.com/dream-ellie"
+              target="_blank"
+              title="my github link"
+            >
+              <i class="fa-brands fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              class="contact__link"
+              href="https://github.com/dream-ellie"
+              target="_blank"
+              title="my linkedin link"
+            >
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+          </li>
+        </ul>
+        <p>개인정보관리책임자 : 윤동규(donghe1472@gmail.com)</p>
+        <p>ⓒ원광대학교 컴퓨터소프트웨어공학과</p>
+      </div>
+    </footer>
+
+    <script
+      type="text/javascript"
+      src="{% static 'js/home-transparency.js' %}"
+    ></script>
+    <script type="text/javascript" src="{% static 'js/project.js' %}"></script>
+    <script>
+      const input = document.querySelector(".pic__search-bar");
+      function onSubmit() {
+        console.log(input.value);
+        if (!input.value) {
+          input.style.marginLeft = "10%";
+        } else {
+          console.log("dlskwl");
+          input.classList.add("active");
+        }
+      }
+    </script>
+    {% endblock content %}
+  </body>
+</html>
