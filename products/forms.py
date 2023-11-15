@@ -15,6 +15,10 @@ class CreateProductForm(forms.ModelForm):
             "grade",
             "repair",
             "registrant",
+            "team_number",
+            "meet",
+            "category",
+            "framework"
         )
         widgets = {
             "title": forms.TextInput(attrs={'placeholder': '프로젝트 이름'}),

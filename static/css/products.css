@@ -374,3 +374,23 @@
   background-color: var(--color-primary);
   color: var(--color-text);
 }
+
+.notice__tag {
+  margin-top: 15px;
+  display: flex;
+  justify-content: left;
+  margin-bottom: 30px;
+}
+
+.notice__tag div {
+  width: 90px;
+  height: 40px;
+  background: #f2f3f7;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 7px;
+  font-size: 0.875rem;
+  color: #555969;
+}

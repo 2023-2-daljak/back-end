@@ -22,7 +22,7 @@ class ProductAdmin(admin.ModelAdmin):
     )
 
 
-@admin.register(models.Species, models.Grade, models.Repair, models.Department)
+@admin.register(models.Species, models.Grade, models.Repair, models.Department, models.Category, models.TeamNumber)
 class ItemAdmin(admin.ModelAdmin):
 
     """ Item Admin Definition """

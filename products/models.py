@@ -50,6 +50,22 @@ class Repair(AbstractItem):
         verbose_name = "보수"
 
 
+class TeamNumber(AbstractItem):
+
+    """ HouseRule Model Definition """
+
+    class Meta:
+        verbose_name = "팀원수"
+
+
+class Category(AbstractItem):
+
+    """ HouseRule Model Definition """
+
+    class Meta:
+        verbose_name = "카테고리"
+
+
 class SearchHistory(models.Model):
 
     query = models.CharField(max_length=255)
@@ -113,6 +129,13 @@ class Product(Common):
         "Species", related_name="species", blank=True)
     grade = models.ManyToManyField("Grade", blank=True)
     repair = models.ManyToManyField("Repair", blank=True)
+
+    team_number = models.ManyToManyField(
+        "TeamNumber", related_name="team", blank=True)
+    meet = models.BooleanField(default=True, blank=True)
+    category = models.ManyToManyField(
+        "Category", related_name="categoy", blank=True)
+    framework = models.CharField("FrameWork", max_length=50, blank=True)
 
     @property
     def get_photo_url(self):
