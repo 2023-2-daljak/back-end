@@ -11,15 +11,23 @@ def go_conversation(request, a_pk, b_pk):
     a_pk = request.user.pk
     user_one = User.objects.get(pk=a_pk)
     user_two = get_object_or_404(User, pk=b_pk)
-    if user_one is not None and user_two is not None:
-        try:
-            conversation = models.Conversation.objects.get(
-                Q(participants=user_one) & Q(participants=user_two)
-            )
-        except models.Conversation.DoesNotExist:
-            conversation = models.Conversation.objects.create()
-            conversation.participants.add(user_one, user_two)
+
+    sorted_user_ids = sorted([user_one.pk, user_two.pk])
+
+    # 대화 상대방과의 대화가 이미 존재하는지 확인합니다.
+    conversation = models.Conversation.objects.filter(
+        participants__id=sorted_user_ids[0]
+    ).filter(
+        participants__id=sorted_user_ids[1]
+    ).first()
+
+    # 이미 존재하는 대화방으로 이동하거나, 없으면 새로운 대화방을 생성합니다.
+    if conversation:
         return redirect(reverse("conversations:detail", kwargs={"pk": conversation.pk}))
+    else:
+        new_conversation = models.Conversation.objects.create()
+        new_conversation.participants.add(user_one, user_two)
+        return redirect(reverse("conversations:detail", kwargs={"pk": new_conversation.pk}))
 
 
 class ConversationDetailView(View):
