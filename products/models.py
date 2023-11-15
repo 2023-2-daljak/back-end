@@ -94,12 +94,10 @@ class Product(Common):
         # => m:m으로 하자
         "photos.Photo",
         blank=True,
-
     )
     price = models.PositiveBigIntegerField(
         null=True,
     )
-
     categories = models.ForeignKey(   # 카테고리
         "product_categories.ProductCategory",
         null=True,
