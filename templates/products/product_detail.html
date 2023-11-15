@@ -1,8 +1,8 @@
 {% extends "base.html" %} {% block content%} {% load static %}
 
 <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-<div class="container mx-auto columns-1 justify-around pb-56">
-  <img src="{{product.get_photo_url}}" />
+<div class="">
+  <img src="{{product.get_photo_url}}" class="project__img" />
   <div class=>
     <div class="flex justify-between mb-8">
       <div class="mb-5">
@@ -55,21 +55,32 @@
     <div class="border-b border-gray-400 pb-8 mt-8 mb-8">
       <h4 class="font-medium text-lg mb-5">기술수준</h4>
      <span class="mb-5  ">
-        {% for department in product.department.all %} <i class="fa-solid fa-gear mr-3"></i> <span class="w-40 h-20 bg-gray-100 rounded-full text-center">팀규모</span>
+        {% for department in product.team_number.all %} <div class="notice__tags">
+                <div class="notice__tag">
+                    <div>{{department}}</div>
+                </div>
+            </div>
       </span>
       {% endfor %}
+      <span class="mb-8 "
+        >  
+        {% if product.meet %}
+        <div class="notice__tag">
+                    <div>만남o</div>
+                </div>
+ {% else %}
+                <div class="notice__tag">
+                    <div>만남x</div>
+                </div>
+                {% endif %}
+      </span>
+     
       <span class="mb-5 "
-        > {% for abc in product.species.all %} <i class="fa-solid fa-square-check mr-3"></i> 만남여부
-      </span>
+        >{% for abc in product.category.all %}  <div class="notice__tag">
+                    <div>{{abc}}</div>
+                </div>
       {% endfor %}
-      <span class="mb-5 "
-        >{% for abc in product.grade.all %}  <i class="fas fa-fingerprint mr-3"></i> 카테고리
-      </span>
-      {% endfor %}
-      <span class="mb-5"
-        >{% for abc in product.repair.all %} <i class="fas fa-tag mr-3"></i> 프레임워크
-      </span>
-      {% endfor %}
+     
     </div>
   
     <div class="border-b border-gray-400 pb-8 mt-8 mb-8">
