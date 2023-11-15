@@ -2,21 +2,21 @@
 
 <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
 <div class="container mx-auto columns-1 justify-around pb-56">
-  <img src="{{product.get_photo_url}}" class="project__img" />
+  <img src="{{product.get_photo_url}}" />
   <div class=>
-    <div class="flex justify-between">
+    <div class="flex justify-between mb-8">
       <div class="mb-5">
-        <h4 class="text-6xl font-medium mb-px">{{product.title}}</h4>
-        <span class="text-gray-700 font-medium">{{product.content}}</span>
+        <span class="text-6xl font-medium ">{{product.title}}</span>
+        <span class="text-gray-700 font-medium text-2xl">{{product.content}}</span>
       </div>
       <div class="mt-24">
           <i class="far fa-edit fa-3x" id="editIcon"></i>
           <i class="far fa-trash-alt fa-3x" id="deleteIcon"></i>
-       
       </div>
     </div>
-    <div class="flex flex-wrap flex-col columns-1 border-b border-gray-400 pb-8 mt-8">
-     
+     <i class="mb-5 fa-solid fa-message" id="messageIcon" href=""><span> Messages</span></i>
+    <div class="flex flex-wrap flex-col columns-1">
+     <div class="mb-5">
       <span class="mb-5 ">
         {% for department in product.department.all %} <i class="fa-solid fa-gear mr-3"></i>{{ department.name }}
       </span>
@@ -33,27 +33,46 @@
         >{% for abc in product.repair.all %} <i class="fas fa-tag mr-3"></i> {{ abc.name }}
       </span>
       {% endfor %}
+
+      </div>
     </div>
     <p class="border-b border-gray-400 pb-8 ">{{room.description}}</p>
     <div class="border-b border-gray-400 pb-8 mt-8">
-      <h4 class="font-medium text-lg mb-5">만나서 작업가능여부</h4>
-      {% for a in room.amenities.all %}
-      <li class="mb-2">{{a}}</li>
+      <h4 class="font-medium text-lg mb-5">이 사용자가 올린 데이터</h4>
+      <div class="flex">
+      {% for a in user.product_set.all %}
+          <div class="p-3">
+          <img src="{{a.get_photo_url}}" class="project__image w-3 h-3" />
+          <div class=>
+            <h3 class="text-3xl">{{a.title}}</h3>
+            <span>{{a.content}}</span>
+          </div>
+         </div>
+      
+      {% endfor %}
+      </div>
+    </div>
+    <div class="border-b border-gray-400 pb-8 mt-8 mb-8">
+      <h4 class="font-medium text-lg mb-5">기술수준</h4>
+     <span class="mb-5  ">
+        {% for department in product.department.all %} <i class="fa-solid fa-gear mr-3"></i> <span class="w-40 h-20 bg-gray-100 rounded-full text-center">팀규모</span>
+      </span>
+      {% endfor %}
+      <span class="mb-5 "
+        > {% for abc in product.species.all %} <i class="fa-solid fa-square-check mr-3"></i> 만남여부
+      </span>
+      {% endfor %}
+      <span class="mb-5 "
+        >{% for abc in product.grade.all %}  <i class="fas fa-fingerprint mr-3"></i> 카테고리
+      </span>
+      {% endfor %}
+      <span class="mb-5"
+        >{% for abc in product.repair.all %} <i class="fas fa-tag mr-3"></i> 프레임워크
+      </span>
       {% endfor %}
     </div>
-    <div class="border-b border-gray-400 pb-8 mt-8">
-      <h4 class="font-medium text-lg mb-5">Facilities</h4>
-      {% for a in room.facilities.all %}
-      <li class="mb-2">{{a}}</li>
-      {% endfor %}
-    </div>
-    <div class="border-b-2 border-black pb-8 mt-8 ">
-      <h4 class="font-medium  mb-5 ">House Rules</h4>
-      {% for a in room.house_rules.all %}
-      <li class="mb-2">{{a}}</li>
-      {% endfor %}
-    </div>
-    <div class="border-b border-gray-400 pb-8 mt-8">
+  
+    <div class="border-b border-gray-400 pb-8 mt-8 mb-8">
       <h4 class="font-medium text-2xl mb-5">Reviews</h4>
       <div>
         {{room.total_rating}} {{room.reviews.count}}
@@ -106,6 +125,14 @@
   document.getElementById("deleteIcon").addEventListener("click", function() {
     // 특정 URL로 이동
     window.location.href = "{% url 'product:delete' product.pk %}";
+  });
+
+
+  // 삭제 아이콘에 대한 클릭 이벤트 처리
+  document.getElementById("messageIcon").addEventListener("click", function() {
+    // 특정 URL로 이동
+    console.log("hello");
+    window.location.href = "{% url 'conversations:go' request.user.id product.id  %}";
   });
 </script>
 {% endblock content %}
