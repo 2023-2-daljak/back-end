@@ -1,0 +1,68 @@
+<head>
+    <link rel="stylesheet" href="../../static/css/components/status-bar.css" />
+    <link rel="stylesheet" href="../../static/css/components/create-page.css" />
+    <link rel="stylesheet" href="../../static/css/components/button.css" />
+</head>
+
+<body class="create-page">
+     {% extends "base.html" %} {% block content%}  
+  {% load static %}
+    <main>
+        <div class="create__title">💻 제품 업데이트</div>
+
+        <form method="POST" class="create" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="create-wrap_second">
+    {% for field in form %} 
+  <label for="create__cont-title">{{field.label}} {{field}}</label> 
+  
+
+ {% endfor %}
+  </div>
+  <div class="btn-component create-btn">
+    <button>Update</button>
+  </div>
+</form>
+
+        </div>
+    </main>
+
+     <!-- Arrow up -->
+      <aside>
+        <a class="arrow-up" href="#home" title="back to top">
+          <i class="fab fa-facebook-messenger"></i>
+        </a>
+      </aside>
+
+
+      <footer id="contact" class="section">
+      <div class="max-container">
+        <h2 class="title ">Let&#39;s talk</h2>
+        <p class="description ">donghe1472@gmail.com</p>
+        <ul class="contact__links">
+          <li>
+            <a
+              class="contact__link"
+              href="https://github.com/dream-ellie"
+              target="_blank"
+              title="my github link"
+            >
+              <i class="fa-brands fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              class="contact__link"
+              href="https://github.com/dream-ellie"
+              target="_blank"
+              title="my linkedin link"
+            >
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+          </li>
+        </ul>
+        <p class="">ⓒ원광대학교 컴퓨터소프트웨어공학과</p>
+      </div>
+    </footer>
+       {% endblock content %}
+</body>

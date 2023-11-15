@@ -125,7 +125,7 @@ class CreateProductView(user_mixins.LoggedInOnlyView, FormView):
 class EditProjectView(UpdateView):
 
     model = models.Product
-    template_name = "product/product_edit.html"
+    template_name = "products/product_edit.html"
     fields = (
         "title",
         "content",
@@ -137,4 +137,13 @@ class EditProjectView(UpdateView):
     )
 
     def get_success_url(self):
-        return reverse("core:project_list")
+        return reverse("product:product_list")
+
+
+class DeleteProductView(DeleteView):
+
+    model = models.Product
+    template_name = "products/product_delete.html"
+
+    def get_success_url(self):
+        return reverse("product:product_list")
