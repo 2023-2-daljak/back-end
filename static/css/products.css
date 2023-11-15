@@ -394,3 +394,13 @@
   font-size: 0.875rem;
   color: #555969;
 }
+
+.detail__content {
+  padding: 20px;
+}
+
+.messages {
+  display: flex;
+  justify-content: end;
+  margin-top: 30px;
+}

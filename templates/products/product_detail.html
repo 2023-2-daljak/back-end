@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block content%} {% load static %}
 
 <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-<div class="">
+<div class="container mx-auto columns-1 justify-around pb-56 mr-96">
   <img src="{{product.get_photo_url}}" class="project__img" />
   <div class=>
     <div class="flex justify-between mb-8">
@@ -12,9 +12,13 @@
       <div class="mt-24">
           <i class="far fa-edit fa-3x" id="editIcon"></i>
           <i class="far fa-trash-alt fa-3x" id="deleteIcon"></i>
+          
       </div>
+     
     </div>
-     <i class="mb-5 fa-solid fa-message" id="messageIcon" href=""><span> Messages</span></i>
+    <div class="messages">
+     <i class="mb-10 fa-solid fa-message fa-2x" id="messageIcon" href=""><span> 톡보내기</span></i>
+     </div>
     <div class="flex flex-wrap flex-col columns-1">
      <div class="mb-5">
       <span class="mb-5 ">
@@ -41,7 +45,7 @@
       <h4 class="font-medium text-lg mb-5">이 사용자가 올린 데이터</h4>
       <div class="flex">
       {% for a in user.product_set.all %}
-          <div class="p-3">
+          <div class="detail__content">
           <img src="{{a.get_photo_url}}" class="project__image w-3 h-3" />
           <div class=>
             <h3 class="text-3xl">{{a.title}}</h3>
