@@ -326,6 +326,10 @@ form .input.has_error input:focus {
 .mr-6 {
   margin-right: 1.5rem;
 }
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
 .mt-10 {
   margin-top: 2.5rem;
 }

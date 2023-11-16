@@ -6,8 +6,17 @@
   <div class=>
     <div class="flex justify-between mb-8">
       <div class="mb-5">
+        
+        <div>
         <span class="text-6xl font-medium ">{{product.title}}</span>
         <span class="text-gray-700 font-medium text-2xl">{{product.content}}</span>
+        </div>
+        <div class="flex">
+          <i class="mb-10 fa-solid fa-message fa-2x mr-2" id="messageIcon" href=""><span> </span></i>
+            <div class="text-gray-700 font-medium text-2xl mt ">{{product.registrant}}</div>
+         
+        </div>
+      
       </div>
       <div class="mt-24">
           <i class="far fa-edit fa-3x" id="editIcon"></i>
@@ -17,7 +26,7 @@
      
     </div>
     <div class="messages">
-     <i class="mb-10 fa-solid fa-message fa-2x" id="messageIcon" href=""><span> 톡보내기</span></i>
+    
      </div>
     <div class="flex flex-wrap flex-col columns-1">
      <div class="mb-5">
