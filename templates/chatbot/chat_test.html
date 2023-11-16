@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<script type="text/javascript" src="/static/jquery-3.2.1.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    :root {
+        /* App Colors */
+        --color-primary: var(--color-black);
+        --color-primary-variant: var(--color-gray);
+        --color-accent: var(--color-blue);
+        --color-accent-variant: var(--color-orange);
+        --color-text: var(--color-white);
+      
+        /* Colors */
+        --color-white: #ffffff;
+        --color-black: #050a13;
+        --color-blue: #03e8f9;
+        --color-orange: #fd6413;
+        --color-gray: #1b1e26;
+      
+        /* Size */   */
+        --size-max-width: 1200px;
+      }
+*{padding: 0;margin: 0;}
+.chat_wrap {
+    
+    display:none;width: 350px;height: 500px;position: fixed;bottom: 30px;right: 95px;background: #a9bdce;}
+.chat_content {
+    height: 60vh;
+    width: 70vw;
+    /* overflow-y:scroll; */
+    padding:20px 20px;
+    background:#1b1e26;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    
+    
+}
+.chat_input 
+{   padding:2px 10px; 
+    border : none;
+    border-radius : 7px;  
+    width:100%;
+    font-size : 20px;
+    
+}
+.chat_input:focus{
+    outline : 3px solid black;
+}
+.chat_header {padding: 10px 15px;border-bottom: 1px solid #95a6b4;width: 100vw}
+.chat_header .close_btn {border: none;background: none;float: right;}
+.send_btn {
+    border: 1px solid #03e8f9;
+    width:150px;
+     background: #03e8f9;
+     height: 100%;
+     color:black;
+     font-weight : bold;
+     border-radius : 7px;
+     font-size : 20px;
+}
+.msg_box:after {content: '';display: block;clear:both;}
+.msg_box > span {padding: 3px 5px;
+    word-break: break-all;
+    display: block;
+    max-width: 300px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size :20px;}
+
+.msg_box.send > span {
+    background:#03e8f9;
+    float: right;}
+
+.msg_box.receive > span {background:#fff;float: left;}
+
+.chat_content_wrap{
+    width : 100vw;
+    height: 80vh;
+    background-color : white;
+    display:flex;
+    justify-content : center;
+    align-items : center;
+    flex-direction : column;
+    
+    
+   
+}
+.form{
+    width : 100%; 
+    height : 50px;
+}
+.form_wrap{
+    width: 100%;
+    height : 100%;
+    display: flex;
+    background-color : #1b1e26;
+    border-bottom-right-radius : 7px;
+    border-bottom-left-radius : 7px;
+}
+.chat_content_line{
+    border : 1px solid black;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius : 7px;
+    border-bottom-left-radius : 7px;
+}
+
+
+</style>
+<body>
+<div class="chat_header">
+    <span>FAQ 챗봇</span>
+    <button type="button" id="close_chat_btn" class="close_btn">X</button>
+</div>
+<div class="chat_content_wrap">
+    <div class="chat_content_line">
+        <div id="divbox" class="chat_content"></div>
+        <form id="form" class="form"style="">
+            <div class="form_wrap">
+                <input type="text" name="input1" class="chat_input" id="input1"  />
+                <input type="button" value="전송" id="btn_submit" class="send_btn" />
+            </div>
+        </form>
+    <div>
+</div>
+<script>
+    $('#btn_submit').click(function () {
+        send();
+    });
+    $('#form').on('submit', function(e){
+       e.preventDefault();
+       send();
+    });
+    $('#close_chat_btn').on('click', function(){
+        $('#chat_wrap').hide().empty();
+    });
+    function send(){
+        $('#divbox').append('<div class="msg_box send"><span>'+$('#input1').val()+'<span></div>');
+        $("#divbox").scrollTop($("#divbox")[0].scrollHeight);
+        console.log("serial"+$('form').serialize())
+        $.ajax({
+            url:  'http://127.0.0.1:8000/chat_service/',
+            type: 'post',
+            dataType: 'json',
+            data: $('form').serialize(),
+            success: function(data) {
+                <!--$('#reponse').html(data.reponse);-->
+                $('#divbox').append('<div class="msg_box receive"><span>'+ data.response +'<span></div>');
+                $("#divbox").scrollTop($("#divbox")[0].scrollHeight);
+            }
+        });
+        $('#input1').val('');
+    }
+</script>
+</body>
+</html>

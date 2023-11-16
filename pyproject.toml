@@ -1,18 +1,14 @@
 [tool.poetry]
-name = "outsourcingwebsite"
+name = "gittest"
 version = "0.1.0"
 description = ""
-authors = ["JHS0320 <gkstu123@gmail.com>"]
-license = "MIT"
+authors = ["Your Name <you@example.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11.2"
-django = "^4.2.6"
-pillow = "^10.0.1"
+python = "^3.8"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-

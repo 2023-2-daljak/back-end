@@ -45,6 +45,7 @@ CUSTOM_APPS = [
     'tailwind',
     'rest_framework',
     "conversations.apps.ConversationsConfig",
+    "chatbot.apps.chatbotConfig",
 
 ]
 
