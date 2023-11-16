@@ -116,7 +116,7 @@ class CreateProductView(user_mixins.LoggedInOnlyView, FormView):
 
     def form_valid(self, form):
         project = form.save()
-        project.user = self.request.user
+        project.registrant = self.request.user
         project.save()
         # project.success(self.request, "Photo Uploaded")
         return redirect(reverse("product:product_list"))

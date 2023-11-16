@@ -10,8 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
 from pathlib import Path
 import os
+
+import certifi
+import ssl
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -163,8 +169,8 @@ LOGIN_URL = "/users/login/"
 EMAIL_HOST = "smtp.naver.com"
 EMAIL_PORT = "587"		 # 서버
 EMAIL_FROM = "달작"
-EMAIL_HOST_USER = 'donghe1472@naver.com'
-EMAIL_HOST_PASSWORD = 'aa878612!'
+EMAIL_HOST_USER = 'dongyu1472@naver.com'
+EMAIL_HOST_PASSWORD = 'aa1234147236'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_USE_TLS = 'daljak@naver.com'
@@ -174,6 +180,8 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 TAILWIND_APP_NAME = 'theme'
 
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
+
+url = "https://www.naver.com/"
+context = ssl._create_unverified_context()
+
+urlopen(url, context=context)

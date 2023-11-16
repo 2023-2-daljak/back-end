@@ -14,7 +14,7 @@ class CreateProductForm(forms.ModelForm):
             "species",
             "grade",
             "repair",
-            "registrant",
+
             "team_number",
             "meet",
             "category",
