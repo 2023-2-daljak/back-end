@@ -7,6 +7,8 @@
   gap: 2rem;
   align-items: center;
   margin-bottom: 2rem;
+  
+ 
 }
 
 .testimonial:nth-child(even) .testimonial__img {
@@ -24,10 +26,30 @@
   padding: 1rem;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  max-width: 750px;
+ 
+  
+}
+
+.testimonials li:nth-of-type(2) > div {
+  background-color: var(--color-gray);
+}
+.testimonial__bubble__name_b{
+  color: var(--color-accent);
+  font-weight: 800;
+}
+.testimonial__bubble__content{
+  color: white;
 }
 
 .testimonial__bubble__name {
   color: var(--color-accent);
   font-weight: bold;
   filter: brightness(70%);
+}
+.testimonial__bubble__name{
+  color : var(--color-accent);
+}
+.testimonial__bubble__p{
+  color : white;
 }

@@ -79,7 +79,7 @@ class SearchHistory(models.Model):
         return self.query
 
 
-class Product(core_models.Common):
+class Product(Common):
 
     SEMI_A = "it"
     SEMI_B = "마케팅"
@@ -97,12 +97,15 @@ class Product(core_models.Common):
         on_delete=models.CASCADE,
         null=True
     )
-
     filter = models.CharField(
         choices=SEMI_CHOICES, default='', max_length=10, blank=False, null=True)
     title = models.CharField(max_length=50, null=True,)
     content = models.TextField(
         null=True,
+    )
+    explanation = models.TextField(
+        null=True,
+        blank=True,
     )
     profile = models.ImageField(blank=True)
     image = models.ManyToManyField(
@@ -110,9 +113,6 @@ class Product(core_models.Common):
         # => m:m으로 하자
         "photos.Photo",
         blank=True,
-    )
-    price = models.PositiveBigIntegerField(
-        null=True,
     )
     categories = models.ForeignKey(   # 카테고리
         "product_categories.ProductCategory",
@@ -144,17 +144,5 @@ class Product(core_models.Common):
         else:
             return "/static/images/user.jpg"
 
-    # def total_rating(self):
-    #     all_reviews = self.product_rewview.all()
-    #     all_ratings = 0
-    #     if len(all_reviews) > 0:
-    #         for review in all_reviews:
-    #             all_ratings += review.rating_average()
-    #         return round(all_ratings / len(all_reviews), 2)
-    #     return 0
-
     def __str__(self):
         return f"{self.title} / by {self.registrant}"
-
-    class Meta:
-        ordering = ["-created_at"]

@@ -9,13 +9,11 @@ class ProductAdmin(admin.ModelAdmin):
         "registrant",
         "title",
         "content",
-        "price",
         "created_at"
     )
 
     list_filter = (
         "registrant",
-        "price",
         "title",
         "categories",
 
