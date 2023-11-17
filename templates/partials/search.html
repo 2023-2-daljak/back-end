@@ -18,7 +18,7 @@
           <form method="GET" action="{% url 'product:search' %}">
             
           <div class="modal__content">
-                <h1>형태</h1>
+                <h1>종류별</h1>
              <div class="modal__filter">
             
             <ul class="modal__list">
@@ -33,7 +33,7 @@
             </ul>
         </div>
 
-        <h1>관념별</h1>
+        <h1>학과별</h1>
              <div class="modal__filter">
             <ul class="modal__list">
                 {% for pot in mind %}
@@ -49,7 +49,7 @@
             </ul>
         </div>
 
-         <h1>색깔</h1>
+         <h1>학년별</h1>
              <div class="modal__filter">
             <ul class="modal__list">
                 {% for pot in color %}
@@ -63,7 +63,7 @@
                 {% endfor %}
             </ul>
         </div>
-         <h1>기타</h1>
+         <h1>페이</h1>
              <div class="modal__filter">
             <ul class="modal__list">
                 {% for pot in other %}
@@ -89,32 +89,18 @@
       <div class="home">
         <div class="pic-filter">
             <ul>
-        {% for item in abc %}
-          <li>{{ item }}</li>
-       {% endfor %}
+       
       </ul>
  
          <div class="pic-filter__slide showing">
           <div class="pic-filter__sort">
            
            <ul class="pic-filter__ul">
-              <i class="fas fa-sort"></i>
+             
               <li class="pic-filter__pop">
                 <ul class="dropdown">
 
-             {% for his in history %}
-
-             {% if his.user == user %}
-        <!-- 사용자에게만 보여지는 리스트 아이템 -->
-   
-              <button class="pic-filter__button " data-filter="new" data-query="{{ his.query }}">
-                      <div class="pic-filter__btn-text">
-                          {{ his.query }}
-                      </div>
-                    </button> 
-              {% endif %}
-              
-             {% endfor %}
+            
 
 
                 </ul>
@@ -138,15 +124,7 @@
         <a href="" class="project" target="blank" data-type="new">
           
            <div class="work__icon" >
-            <!-- {% if request.user.is_authenticated %} -->
-            <i class="fas fa-heart topHeart "
-              data-picture-id="{{ abcd.id }}"></i>
-        
-              <!-- {% else %} -->
-            <i class="fas fa-heart topHeart"></i>
-            <!-- {% endif %} -->
-            <i class="far fa-heart fas-2x bottomHeart "
-              data-picture-id="{{ abcd.id }}"></i>
+            
             </div>
            
           <img src="{{abcd.get_photo_url}}" class="project__img" />
