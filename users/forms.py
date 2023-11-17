@@ -1,6 +1,7 @@
 from django import forms
 from . import models
 import django.contrib.auth.forms as auth_forms
+from django.core.exceptions import ValidationError
 
 
 class LoginForm(forms.Form):
@@ -34,9 +35,14 @@ class SignUpForm(forms.Form):
 
     def clean_email(self):
         email = self.cleaned_data.get("email")
+
+        if not email.endswith('@wku.ac.kr'):
+            raise ValidationError(
+                "오직 wku.ac.kr로만 가입가능합니다")
+
         try:
             models.User.objects.get(email=email)
-            raise forms.ValidationError("User already exists with that email")
+            raise forms.ValidationError("이미 이메일을 가지고 있습니다")
         except models.User.DoesNotExist:
             return email
 
@@ -44,7 +50,7 @@ class SignUpForm(forms.Form):
         password = self.cleaned_data.get("password")
         password1 = self.cleaned_data.get("password1")
         if password != password1:
-            raise forms.ValidationError("Password confirmation does not match")
+            raise forms.ValidationError("비밀번호가 일치하지 않습니다")
         else:
             return password
 
