@@ -96,12 +96,6 @@ def chat_service(request):
         input1 = request.POST['input1']
         print("시작")
         response = faq_answer(input1)
-        
-        #print("******")
-        #print(response)
-        #output = response
-        
-        
         output = dict()
         output['response'] = response
     

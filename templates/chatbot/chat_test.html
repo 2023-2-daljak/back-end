@@ -21,8 +21,8 @@
         --color-orange: #fd6413;
         --color-gray: #1b1e26;
       
-        /* Size */   */
-        --size-max-width: 1200px;
+        /* Size */  
+       
       }
 *{padding: 0;margin: 0;}
 .chat_wrap {
@@ -136,12 +136,13 @@
        send();
     });
     $('#close_chat_btn').on('click', function(){
-        $('#chat_wrap').hide().empty();
-    });
+        $('.chat_content_wrap').hide().empty();
+    });    
     function send(){
         $('#divbox').append('<div class="msg_box send"><span>'+$('#input1').val()+'<span></div>');
+       
         $("#divbox").scrollTop($("#divbox")[0].scrollHeight);
-        console.log("serial"+$('form').serialize())
+       
         $.ajax({
             url:  'http://127.0.0.1:8000/chat_service/',
             type: 'post',

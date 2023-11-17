@@ -2,8 +2,9 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  background-color: aqua;
+ 
 }
+
 
 .pic-list__filter {
   width: 100px;
@@ -375,3 +376,6 @@
   background-color: var(--color-primary);
   color: var(--color-text);
 }
+
+
+@media screen and (max-width:)
