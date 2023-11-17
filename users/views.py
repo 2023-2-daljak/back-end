@@ -91,3 +91,31 @@ def complete_verification(request, key):
         # to do: add error message
         pass
     return redirect(reverse("product:home"))
+
+
+class UpdatePasswordView(PasswordChangeView):
+
+    template_name = "users/update-password.html"
+
+
+class MyPasswordResetView(PasswordResetView):
+    success_url = reverse_lazy("user:password-verify")
+    template_name = 'users/password_reset_form.html'
+    email_template_name = 'users/password_reset.html'
+    mail_title = "비밀번호 재설정"
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+
+class MyPasswordResetConfirmView(PasswordResetConfirmView):
+    success_url = reverse_lazy("core:project")
+    template_name = 'users/password_reset_confirm.html'
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+
+def password_verify(request):
+
+    return render(request, "users/password_reset_complete.html")

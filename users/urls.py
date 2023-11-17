@@ -14,6 +14,14 @@ urlpatterns = [
     path("email_verify/", views.email_verify, name="verify"),
     path("verify/<str:key>", views.complete_verification,
          name="complete-verification"),
+    # 비밀번호 초기화
+    path('password_reset/', views.MyPasswordResetView.as_view(),
+         name='password_reset'),
+    path('reset/<uidb64>/<token>/', views.MyPasswordResetConfirmView.as_view(),
+         name='password_reset_confirm'),
+
+    path("password_verify/", views.password_verify, name="password-verify"),
 ]
+
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

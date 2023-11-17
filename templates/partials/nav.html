@@ -28,11 +28,13 @@
           >Products</a
         >
       </li>
-      <li>
-        <a class="header__menu__item" href="#testimonial">Massages</a>
-      </li>
-
       {% if user.is_authenticated %}
+      <li>
+        <a href="{% url 'product:create' %}"
+          ><i class="fas fa-pencil-alt" style="color: white"></i
+        ></a>
+      </li>
+      {% endif %} {% if user.is_authenticated %}
       <li>
         <a class="header__menu__item" href="{% url 'user:logout' %}">Logout </a>
       </li>

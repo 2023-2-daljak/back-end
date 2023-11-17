@@ -3,10 +3,7 @@ const picContainer = document.querySelector(".pic-list__list");
 const pictures = document.querySelectorAll(".pictures");
 const pic = document.querySelector(".pic-filter__slide");
 const chevron = document.querySelector(".pic-filter__chevron");
-<<<<<<< HEAD
 const picCard = document.querySelector(".pic-card");
-=======
->>>>>>> origin/master
 
 pic.addEventListener("click", (e) => {
   console.log("button");
@@ -82,11 +79,8 @@ chevron.addEventListener("click", (e) => {
 // //     input.value = savedValue;
 // //   }
 // // });
-<<<<<<< HEAD
 
 document.querySelectorAll(".pic-card").onclick = function () {
   console.log("hello");
   window.location.href = "{% url 'product:product_list' %}";
 };
-=======
->>>>>>> origin/master
