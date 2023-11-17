@@ -50,6 +50,7 @@ CUSTOM_APPS = [
     'tailwind',
     'rest_framework',
     "conversations.apps.ConversationsConfig",
+    "chatbot.apps.chatbotConfig",
 
 ]
 
@@ -172,3 +173,6 @@ EMAIL_HOST_PASSWORD = "a94314f51f5b0180effa482b3da878e9-1c7e8847-d90e9666"
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 EMAIL_FROM = "dongyu1472@daljk.com"
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
