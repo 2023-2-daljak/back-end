@@ -23,6 +23,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.views import PasswordChangeView
 
+from django.core.mail import send_mail
 # Create your views here.
 
 
@@ -63,7 +64,7 @@ class SignUpView(FormView):
         user = authenticate(self.request, username=username, password=password)
         if user is not None:
             login(self.request, user)
-
+        user.verify_email()
         return super().form_valid(form)
 
 
@@ -119,3 +120,18 @@ class MyPasswordResetConfirmView(PasswordResetConfirmView):
 def password_verify(request):
 
     return render(request, "users/password_reset_complete.html")
+
+
+def index(request):
+    return render(request, "index.html")
+
+
+def sendmail(request):
+    send_mail("안녕하세요 daljk입니ㅏㄷ",
+              "gpff",
+              "dongyu1472@naver.com",
+              ["droggba1472@gmail.com"],
+              fail_silently=False
+              )
+
+    return redirect("/")

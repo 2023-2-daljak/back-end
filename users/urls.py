@@ -21,6 +21,9 @@ urlpatterns = [
          name='password_reset_confirm'),
 
     path("password_verify/", views.password_verify, name="password-verify"),
+
+    path("mail/", views.index, name="index"),
+    path("", views.sendmail, name="send")
 ]
 
 

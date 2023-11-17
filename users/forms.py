@@ -24,14 +24,11 @@ class LoginForm(forms.Form):
                 "User does not exist"))
 
 
-class SignUpForm(forms.Form):
+class SignUpForm(forms.ModelForm):
 
-    username = forms.CharField(max_length=80)
-
-    email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput)
-    password1 = forms.CharField(
-        widget=forms.PasswordInput, label="Confirm Password")
+    class Meta:
+        model = models.User
+        fields = ("email", "password",  "username")
 
     def clean_email(self):
         email = self.cleaned_data.get("email")
@@ -54,13 +51,16 @@ class SignUpForm(forms.Form):
         else:
             return password
 
-    def save(self):
-
+    def save(self,  *args, **kwargs):
+        user = super().save(commit=False)
         username = self.cleaned_data.get("username")
         email = self.cleaned_data.get("email")
         password = self.cleaned_data.get("password")
-        user = models.User.objects.create_user(username, email, password)
+
+        user.email = email
+
         user.username = username
+        user.set_password(password)
 
         user.save()
 
