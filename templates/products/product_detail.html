@@ -21,14 +21,9 @@
       <div class="mt-24">
           <i class="far fa-edit fa-3x" id="editIcon"></i>
           <i class="far fa-trash-alt fa-3x" id="deleteIcon"></i>
-          {% on_favs products as abc %}
-            {% if abc %}
-               <i class=" far fa-star fa-3x" id="favIcon"></i>
-            {% else %} 
-               <i class=" far fa-star fa-3x" style="color: yellow;" id="favsIcon"></i>
-            {% endif %}
-           
-          
+         
+                <a href="{% url 'lists:toggle_room' product.id %}" class=" fa-solid fa-star fa-3x" style="color: yellow;" id="favsIcon"></a>
+    
       </div>
      
     </div>
@@ -38,12 +33,7 @@
     <div class="flex flex-wrap flex-col columns-1">
      <div class="mb-5">
       <span class="mb-5 ">
-        {% on_favs products as on_favs_boolean %}
-            {% if on_favs_boolean %}
-        시발
-          {% else %} 
-                <a href="{% url 'lists:toggle_room' product.id %}" class=" far fa-star fa-3x" style="color: yellow;" id="favsIcon">생성</a>
-         {% endif %}
+       
         {% for department in product.department.all %} <i class="fa-solid fa-gear mr-3"></i>{{ department.name }}
       </span>
       {% endfor %}
@@ -109,13 +99,37 @@
      
     </div>
   
-    <div class="border-b border-gray-400 pb-8 mt-8 mb-8">
-      <h4 class="font-medium text-2xl mb-5">Reviews</h4>
-      <div>
-        {{room.total_rating}} {{room.reviews.count}}
-        review{{room.reviews.count|pluralize}}
-      </div>
-    </div>
+    <h4 class="font-medium text-2xl mb-5">Reviews</h4>
+                <div class="flex items-center">
+                    <div>
+                        <i class="fas fa-star text-teal-500"></i>
+                        
+                    </div>
+                    <div class="h-4 w-px bg-gray-400 mx-5"></div>
+                    <div>
+                        <span class="font-bold text-xl">{{room.reviews.count}}</span>
+                        <span>review{{room.reviews.count|pluralize}}</span>
+                    </div>
+                </div>
+                <div class="mt-10">
+                    {% for review in product.reviews.all  %}
+                        <div class="border-section">
+                            <div class="mb-3 ">
+                              <div>
+                                <i class="fas fa-star text-teal-500" style="color: yellow;"></i>
+                        <span class="font-bold text-xl">{{review.rating}}</span>
+                              </div>
+                                
+                                <div class="flex flex-col ml-5">
+                                    <span class="font-medium">{{review.writer}}</span>
+                                    <span class="text-sm text-gray-500">{{review.created_at|date:'F Y'}}</span>
+                                </div>
+                            </div>
+                            <p>{{review.content}}</p>
+                        </div>
+                    {% endfor %}    
+                </div>
+
   </div>
   <div class="w-1/3"></div>
 
@@ -169,7 +183,7 @@
   document.getElementById("messageIcon").addEventListener("click", function() {
     // 특정 URL로 이동
     console.log("hello");
-    window.location.href = "{% url 'conversations:go' request.user.id product.id  %}";
+    window.location.href = "{% url 'conversations:detail' product.pk %}";
   });
 
   
@@ -183,6 +197,22 @@
     // 특정 URL로 이동
     console.log("hello");
     window.location.href = "{% url 'lists:toggle_room' product.id %}";
+  });
+
+  // DOM이 준비되면 실행될 함수
+  document.addEventListener("DOMContentLoaded", function () {
+    // 첫 번째 아이콘을 선택합니다.
+    const favsIcon1 = document.getElementById("favsIcon1");
+
+    // 클릭 이벤트 리스너 등록
+    favsIcon1.addEventListener("click", function () {
+      // active 클래스를 토글
+      if (favsIcon1.classList.contains("active")) {
+        favsIcon1.classList.remove("active");
+      } else {
+        favsIcon1.classList.add("active");
+      }
+    });
   });
 </script>
 {% endblock content %}

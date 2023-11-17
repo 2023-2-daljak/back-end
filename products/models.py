@@ -79,7 +79,7 @@ class SearchHistory(models.Model):
         return self.query
 
 
-class Product(Common):
+class Product(core_models.Common):
 
     SEMI_A = "it"
     SEMI_B = "마케팅"
@@ -144,5 +144,17 @@ class Product(Common):
         else:
             return "/static/images/user.jpg"
 
+    # def total_rating(self):
+    #     all_reviews = self.product_rewview.all()
+    #     all_ratings = 0
+    #     if len(all_reviews) > 0:
+    #         for review in all_reviews:
+    #             all_ratings += review.rating_average()
+    #         return round(all_ratings / len(all_reviews), 2)
+    #     return 0
+
     def __str__(self):
         return f"{self.title} / by {self.registrant}"
+
+    class Meta:
+        ordering = ["-created_at"]

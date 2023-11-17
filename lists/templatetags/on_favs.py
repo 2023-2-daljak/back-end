@@ -10,6 +10,5 @@ def on_favs(context, products):
     user = context.request.user
 
     the_list = list_models.List.objects.get(
-        user=user, name="My Favourites Houses"
-    )
+        user=user, name="My Favourites Houses")
     return products in the_list.products.all()
