@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{% block page_title %}{% endblock page_title %}| Daljak</title>
+    {% load static %}
+
+    <script
+      src="https://kit.fontawesome.com/132c10257e.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- 
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" /> -->
+    <link
+      type="text/css"
+      href="{% static 'css/global.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      type="text/css"
+      href="{% static 'css/create_form.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      type="text/css"
+      href="{% static 'css/header.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      type="text/css"
+      href="{% static 'css/home-product.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      type="text/css"
+      href="{% static 'css/products.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      type="text/css"
+      href="{% static 'css/project.css' %}"
+      rel="stylesheet"
+    />
+
+    <link
+      type="text/css"
+      href="{% static 'css/about.css' %}"
+      rel="stylesheet"
+    />
+
+    <link
+      type="text/css"
+      href="{% static 'css/detail.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      type="text/css"
+      href="{% static 'css/login.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      type="text/css"
+      href="{% static 'css/signup.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      type="text/css"
+      href="{% static 'css/footer.css' %}"
+      rel="stylesheet"
+    />
+
+    <link type="text/css" href="{% static 'css/test.css' %}" rel="stylesheet" />
+    <link type="text/css" href="{% static 'css/home.css' %}" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- 헤더 -->
+    <header>
+      {% include "partials/nav.html" %}
+      <!-- {% block search-bar %}
+      <form method="get">
+        <input name="city" placeholder="제품을 찾아보세요" />
+      </form>
+      {% endblock search-bar %} -->
+    </header>
+
+    {% block content %}{% endblock %} {% include "partials/footer.html" %}
+  </body>
+</html>

@@ -1,0 +1,72 @@
+/* Home */
+#home {
+  position: relative;
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  padding: 5rem 1rem;
+  padding-top: 7rem;
+  text-align: center;
+}
+
+.home__avatar {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 100%;
+  border: 3px solid var(--color-accent);
+}
+
+.title {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+.home__title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.home__title--strong {
+  color: var(--color-accent);
+}
+
+.home__description {
+  font-size: 1.3rem;
+}
+
+.home__contact {
+  display: inline-block;
+  background-color: var(--color-accent);
+  color: var(--color-black);
+  margin: 2rem;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.home__contact:hover {
+  background-color: transparent;
+  color: var(--color-text);
+  outline: 2px solid var(--color-accent);
+}
+
+.custom-shape-divider-bottom-1698908703 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1698908703 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 86px;
+}
+
+.custom-shape-divider-bottom-1698908703 .shape-fill {
+  fill: #ffffff;
+}

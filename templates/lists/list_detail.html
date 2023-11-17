@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% extends "base.html" %} {% block content%}  
+  {% load static %}
+  <head>
+    <link rel="stylesheet" href="{% static 'csss/styles.css' %}" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+     <script
+      src="https://kit.fontawesome.com/132c10257e.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  </head>
+  <body>
+    
+    <div class="modal hidden">
+          <button id="close-btn"><ion-icon class="icon" size="large" name="close-outline"></ion-icon></button>
+          <form method="GET" action="{% url 'product:search' %}">
+            
+          <div class="modal__content">
+                <h1>종류별</h1>
+             <div class="modal__filter">
+            
+            <ul class="modal__list">
+                {% for pot in shape %}
+                    <li>
+                       <input id="a_{{abc.pk}}" name="shape" type="checkbox" value={{pot.pk}} {% if pot.pk|slugify in shapes_s %}
+                            checked
+                        {% endif %} />
+                        <label for="a_{{abc.pk}}">{{pot.name}}</label>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <h1>학과별</h1>
+             <div class="modal__filter">
+            <ul class="modal__list">
+                {% for pot in mind %}
+                    <li>
+                        <input id="a_{{pot.pk}}" name="mind" type="checkbox" value={{pot.pk}} {% if pot.pk|slugify in mind_s %}
+                            checked
+                        {% endif %} 
+                        
+                         />
+                        <label for="a_{{pot.pk}}">{{pot.name}}</label>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+         <h1>학년별</h1>
+             <div class="modal__filter">
+            <ul class="modal__list">
+                {% for pot in color %}
+                    <li>
+                              <input id="a_{{pot.pk}}" name="color" type="checkbox" value={{pot.pk}} {% if pot.pk|slugify in color_s %}
+                            checked
+                        {% endif %} />
+                        <label for="a_{{pot.pk}}">{{pot.name}}</label>
+                
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+         <h1>페이</h1>
+             <div class="modal__filter">
+            <ul class="modal__list">
+                {% for pot in other %}
+                    <li>
+                       <input id="a_{{pot.pk}}" name="other" type="checkbox" value={{pot.pk}} {% if pot.pk|slugify in other_s %}
+                            checked
+                        {% endif %}  />
+                        <label for="a_{{pot.pk}}">{{pot.name}}</label>
+                       
+                    </li>
+                {% endfor %}
+            </ul>  
+        </div>
+
+        <div class="modal-button">
+          <p class="modal-button__x">전체해제</p>
+          <button class="modal-button__content">조회</button>
+        </div>
+         
+          </div>
+          </form>
+        </div>
+      <div class="home" style="display: flex;
+    flex-direction: column;">
+        <div class="pic-filter">
+            <ul>
+        {% for item in abc %}
+          <li>{{ item }}</li>
+       {% endfor %}
+      </ul>
+ 
+           <button class="pic-filter__filterbtn">   
+              <i class="fas fa-bars">필터</i></button>
+        </div>
+
+
+      <div class="pic-list__list">
+        {% for room in user.list.products.all %}
+       
+        <div>
+        <a href="{% url 'product:detail' pk=room.pk %}"  class="project" >
+          <img src="{{room.get_photo_url}}" class="project__img" />
+          <div class="project__description">
+            <h3 class="text-3xl">{{room.title}}</h3>
+            <span>{{room.content}}</span>
+          </div>
+         
+        </a>  
+        <div class="project__text">
+            <h3>{{room.title}}</h3>
+            <span>{{room.content}}</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+
+      <div class="pic-list__page">
+        {% if potato.has_previous %}
+        <a class="pic-list__pageicons" href="?page={{potato.number|add:-1}}"><i class="fas fa-chevron-left  "></i></a>
+       {% endif %}
+
+         Page {{potato.number}} of {{potato.paginator.num_pages}}
+          
+       {% if potato.has_next  %}
+      
+        <a class="pic-list__pageicon" href="?page={{potato.number|add:1}}"> <i class="fas fa-chevron-right "></i></a>
+       {% endif %}
+
+
+        </div>
+
+
+      <div>
+          <form method="get" action="{% url 'product:search' %}"  class="picture__search">
+         
+            <div class="pic__search-box">
+                <input name="city" placeholder="" class="pic__search-bar " value="{{city}}" onchange="onSubmit()">
+                <div class="pic__search-placeholder">
+                  <i class="fas fa-search"></i></input>
+                  <p class="sc-searchbox-placeholder-text">Search </p>
+                </div>
+                
+            </div>
+            <!-- 글 작성 버튼은 관리자만 보이도록 해주세요 -->
+          
+        </form>
+      </div>
+
+
+  
+
+    
+    <!-- Arrow up -->
+      <aside>
+        <a class="arrow-up" href="#home" title="back to top">
+          <i class="fab fa-facebook-messenger"></i>
+        </a>
+      </aside>
+
+
+      <footer id="contact" class="section">
+      <div class="max-container">
+        <h2 class="title ">Let&#39;s talk</h2>
+        <p class="description ">donghe1472@gmail.com</p>
+        <ul class="contact__links">
+          <li>
+            <a
+              class="contact__link"
+              href="https://github.com/dream-ellie"
+              target="_blank"
+              title="my github link"
+            >
+              <i class="fa-brands fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              class="contact__link"
+              href="https://github.com/dream-ellie"
+              target="_blank"
+              title="my linkedin link"
+            >
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+          </li>
+        </ul>
+        <p class="">ⓒ원광대학교 컴퓨터소프트웨어공학과</p>
+      </div>
+    </footer>
+
+     <script type="text/javascript" src="{% static 'js/arrow-sec.js' %}"></script>
+   
+   <script type="text/javascript" src="{% static 'js/arrowup.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/slide.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/pic-filter.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/modal.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/search.js' %}"></script>
+     <script type="text/javascript" src="{% static 'js/pic-fav.js' %}"></script>
+    <script>  
+      const input = document.querySelector(".pic__search-bar");
+      function onSubmit() {
+        console.log(input.value);
+      if(!input.value) {
+        input.style.marginLeft = "10%";
+      }
+
+      else{
+        console.log("dlskwl");
+        input.classList.add("active");
+      }
+}
+
+    document.querySelectorAll(".project").forEach(function(element) {
+    console.log("Click event registered for element:", element);
+    element.addEventListener("click", function() {
+        console.log("Clicked!");
+        window.location.href = element.getAttribute("href");
+    });
+});
+
+    </script>
+    {% endblock content %}
+
+</html>
