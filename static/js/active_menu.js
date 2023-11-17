@@ -16,6 +16,18 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log(item);
       item.classList.add("active");
     } else if (
+      currentURL === "http://127.0.0.1:8000/products/create" &&
+      index === 3
+    ) {
+      console.log(item);
+      item.classList.add("active");
+    } else if (
+      currentURL === "http://127.0.0.1:8000/lists/favs/" &&
+      index === 2
+    ) {
+      console.log(item);
+      item.classList.add("active");
+    } else if (
       currentURL === "http://127.0.0.1:8000/users/login/" &&
       index === 3
     ) {

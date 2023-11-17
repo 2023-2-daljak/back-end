@@ -56,14 +56,13 @@ class User(AbstractUser):
                 "emails/verify_email.html", {"secret": secret}
             )
             send_mail(
-                "달작 인증번호",
+                "Verify Airbnb Account",
                 strip_tags(html_message),
                 settings.EMAIL_FROM,
                 [self.email],
+                fail_silently=False,
                 html_message=html_message,
             )
-
-            self.save()
         return
 
 

@@ -28,9 +28,16 @@
           >Products</a
         >
       </li>
+
       {% if user.is_authenticated %}
       <li>
-        <a href="{% url 'product:create' %}"
+        <a class="header__menu__item" href="{% url 'lists:see-favs' %}"
+          >Favs
+        </a>
+      </li>
+      {% endif %} {% if user.is_authenticated %}
+      <li>
+        <a class="header__menu__item" href="{% url 'product:create' %}"
           ><i class="fas fa-pencil-alt" style="color: white"></i
         ></a>
       </li>

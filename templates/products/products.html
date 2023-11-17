@@ -107,7 +107,7 @@
         {% for abcd in potato.object_list %}
        
         <div>
-        <a href="{% url 'product:detail' pk=abcd.pk %}"  class="project" target="blank" data-type="new">
+        <a href="{% url 'product:detail' pk=abcd.pk %}"  class="project" >
           <img src="{{abcd.get_photo_url}}" class="project__img" />
           <div class="project__description">
             <h3 class="text-3xl">{{abcd.title}}</h3>

@@ -165,11 +165,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Email Configuration
 
 
-EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST = "smtp.mailgun.org"
 EMAIL_PORT = 465
-EMAIL_HOST_USER = 'donghe1472@gmail.com'
-EMAIL_HOST_PASSWORD = "aa878612@"
-EMAIL_USE_TLS = True
-
-EMAIL_USE_SSL = False
-EMAIL_FROM = "dongyu1472@naver.com"
+EMAIL_HOST_USER = 'sandbox040909bafe3f44a38f258701a0d9943d.mailgun.org'
+EMAIL_HOST_PASSWORD = "a94314f51f5b0180effa482b3da878e9-1c7e8847-d90e9666"
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_FROM = "dongyu1472@daljk.com"
