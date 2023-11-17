@@ -59,3 +59,11 @@ button:focus {
   padding: 4rem;
   text-align: center;
 }
+
+#hello i {
+  margin-right: 10px;
+}
+
+#hello p {
+  margin-right: 10px;
+}

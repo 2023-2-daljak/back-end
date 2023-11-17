@@ -18,12 +18,12 @@
         </div>
       
       </div>
-      <div class="mt-24">
-          <i class="far fa-edit fa-3x" id="editIcon"></i>
-          <i class="far fa-trash-alt fa-3x" id="deleteIcon"></i>
+      <div class="mt-24 flex " id="hello">
+         <p class=" far fa-star fa-3x topHeart mr-1" style="color: black;" ></p>
+          <p class=" fa-solid fa-star fa-3x bottomHeart mr-1" style="color: yellow; display: none;" ></p>
+          <i class="far fa-edit fa-3x " id="editIcon"></i>
+          <i class="far fa-trash-alt fa-3x mr-1" id="deleteIcon"></i>
          
-                <a href="{% url 'lists:toggle_room' product.id %}" class=" fa-solid fa-star fa-3x" style="color: yellow;" id="favsIcon"></a>
-    
       </div>
      
     </div>
@@ -165,7 +165,9 @@
         <p class="">ⓒ원광대학교 컴퓨터소프트웨어공학과</p>
       </div>
     </footer>
+     <script type="text/javascript" src="{% static 'js/pic-fav.js' %}"></script>
 <script>
+  
   // 편집 아이콘에 대한 클릭 이벤트 처리
   document.getElementById("editIcon").addEventListener("click", function() {
     // 특정 URL로 이동
@@ -214,5 +216,31 @@
       }
     });
   });
+
+  const topHearts = document.querySelectorAll(".topHeart");
+  const bottomHearts = document.querySelectorAll(".bottomHeart");
+
+topHearts.forEach((topHeart) => {
+  topHeart.addEventListener("click", function (e) {
+    e.preventDefault();
+    topHeart.style.display = "none";
+    // 해당 topHeart에 연결된 bottomHeart를 찾아서 보이도록 변경
+    const relatedBottomHeart =
+      topHeart.parentElement.querySelector(".bottomHeart");
+    relatedBottomHeart.style.display = "block";
+  });
+});
+
+bottomHearts.forEach((bottomHeart) => {
+  bottomHeart.addEventListener("click", function (e) {
+    e.preventDefault();
+    bottomHeart.style.display = "none";
+    // 해당 bottomHeart에 연결된 topHeart를 찾아서 보이도록 변경
+    const relatedTopHeart =
+      bottomHeart.parentElement.querySelector(".topHeart");
+    relatedTopHeart.style.display = "block";
+  });
+});
+
 </script>
 {% endblock content %}
