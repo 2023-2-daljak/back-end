@@ -56,11 +56,10 @@ class User(AbstractUser):
                 "emails/verify_email.html", {"secret": secret}
             )
             send_mail(
-                "Verify Airbnb Account",
+                "Verify Daljak",
                 strip_tags(html_message),
-                settings.EMAIL_FROM,
+                "donghe1472@gmail.com",
                 [self.email],
-                fail_silently=False,
                 html_message=html_message,
             )
         return

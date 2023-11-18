@@ -28,7 +28,7 @@ class HomeView(ListView):
 def all_products(request):
     page = request.GET.get("page")
     all_product = models.Product.objects.all()
-    paginator = Paginator(all_product, 6)
+    paginator = Paginator(all_product, 10)
     products = paginator.get_page(page)
 
     shapes_s = models.Species.objects.all()

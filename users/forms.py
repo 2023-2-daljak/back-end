@@ -24,21 +24,27 @@ class LoginForm(forms.Form):
                 "User does not exist"))
 
 
-class SignUpForm(forms.Form):
+class SignUpForm(forms.ModelForm):
+    password1 = forms.CharField(widget=forms.PasswordInput, label="패스워드확인")
 
-    username = forms.CharField(max_length=80)
+    class Meta:
+        model = models.User
+        fields = ("username","email", "password",  )
+        
+    widget = {
+            "username": forms.TextInput(attrs={'placeholder': '이름을 입력해주세요'}),
+            "password": forms.PasswordInput,
+            "password1": forms.PasswordInput,
+            "major": forms.TextInput(attrs={'placeholder': '학과을 입력해주세요'}),
 
-    email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput)
-    password1 = forms.CharField(
-        widget=forms.PasswordInput, label="Confirm Password")
+        }
 
     def clean_email(self):
         email = self.cleaned_data.get("email")
 
-        if not email.endswith('@wku.ac.kr'):
-            raise ValidationError(
-                "오직 wku.ac.kr로만 가입가능합니다")
+        # if not email.endswith('@wku.ac.kr'):
+        #     raise ValidationError(
+        #         "오직 wku.ac.kr로만 가입가능합니다")
 
         try:
             models.User.objects.get(email=email)
@@ -54,13 +60,16 @@ class SignUpForm(forms.Form):
         else:
             return password
 
-    def save(self):
-
+    def save(self,  *args, **kwargs):
+        user = super().save(commit=False)
         username = self.cleaned_data.get("username")
         email = self.cleaned_data.get("email")
         password = self.cleaned_data.get("password")
-        user = models.User.objects.create_user(username, email, password)
+        
+        user.email = email
+
         user.username = username
+        user.set_password(password)
 
         user.save()
 

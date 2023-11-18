@@ -164,15 +164,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Email Configuration
-
-
-EMAIL_HOST = "smtp.mailgun.org"
-EMAIL_PORT = 465
-EMAIL_HOST_USER = 'sandbox040909bafe3f44a38f258701a0d9943d.mailgun.org'
-EMAIL_HOST_PASSWORD = "a94314f51f5b0180effa482b3da878e9-1c7e8847-d90e9666"
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True
-EMAIL_FROM = "dongyu1472@daljk.com"
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587	 # 서버
+EMAIL_FROM = "sssss@sandbox67029800135e4f9eac7b8688a7bbd8c5.mailgun.org"
+EMAIL_HOST_USER = 'donghe1472@gmail.com'
+EMAIL_HOST_PASSWORD = 'ofpq aywz oftn ipgs'
+EMAIL_USE_TLS = True

@@ -19,6 +19,7 @@ class CreateProductForm(forms.ModelForm):
             "category",
             "framework"
         )
+      
         widgets = {
             "title": forms.TextInput(attrs={'placeholder': '프로젝트 이름'}),
             "content": forms.TextInput(attrs={'placeholder': '간단한 설명을 적어주세요'}),
@@ -33,4 +34,8 @@ class CreateProductForm(forms.ModelForm):
 
     def save(self, *args, **kwargs):
         project = super().save(commit=False)
+        repair = self.cleaned_data.get("repair")
+        project.repair = repair
+        project.save()
+        
         return project
