@@ -50,6 +50,7 @@ CUSTOM_APPS = [
     'tailwind',
     'rest_framework',
     "conversations.apps.ConversationsConfig",
+    "phonenumber_field"
 
 ]
 

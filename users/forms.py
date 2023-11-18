@@ -25,17 +25,26 @@ class LoginForm(forms.Form):
 
 
 class SignUpForm(forms.ModelForm):
+    password1 = forms.CharField(widget=forms.PasswordInput, label="패스워드확인")
 
     class Meta:
         model = models.User
-        fields = ("email", "password",  "username")
+        fields = ("username", "email", "password",
+                  "password1", "major")
+        widget = {
+            "username": forms.TextInput(attrs={'placeholder': '이름을 입력해주세요'}),
+            "password": forms.PasswordInput,
+            "password1": forms.PasswordInput,
+            "major": forms.TextInput(attrs={'placeholder': '학과을 입력해주세요'}),
+
+        }
 
     def clean_email(self):
         email = self.cleaned_data.get("email")
 
-        if not email.endswith('@wku.ac.kr'):
-            raise ValidationError(
-                "오직 wku.ac.kr로만 가입가능합니다")
+        # if not email.endswith('@wku.ac.kr'):
+        #     raise ValidationError(
+        #         "오직 wku.ac.kr로만 가입가능합니다")
 
         try:
             models.User.objects.get(email=email)
@@ -56,11 +65,13 @@ class SignUpForm(forms.ModelForm):
         username = self.cleaned_data.get("username")
         email = self.cleaned_data.get("email")
         password = self.cleaned_data.get("password")
+        major = self.cleaned_data.get("major"),
 
         user.email = email
 
         user.username = username
         user.set_password(password)
+        user.major = major
 
         user.save()
 
