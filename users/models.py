@@ -56,7 +56,7 @@ class User(AbstractUser):
                 "emails/verify_email.html", {"secret": secret}
             )
             send_mail("안녕하세요 daljk입니ㅏㄷ",
-                      "gpff",
+                      "donghe1472@gmail.com",
                       "dongyu1472@gmail.com",
                       [self.email],
                       fail_silently=False
