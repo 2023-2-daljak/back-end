@@ -64,11 +64,11 @@
   margin-bottom: 7px;
   font-size: 13px;
 }
-
-.signup__input p:nth-child(3) {
-  border-bottom: 1px solid black;
-  margin-bottom: 30px;
-  padding-bottom: 30px;
+.signup__input p > span {
+  display: none;
+}
+.signup__input p {
+  padding: 7px;
 }
 
 @media screen and (max-width: 600px) {

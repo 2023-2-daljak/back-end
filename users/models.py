@@ -5,6 +5,7 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 import uuid
 from django.conf import settings
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class User(AbstractUser):
@@ -44,6 +45,17 @@ class User(AbstractUser):
         max_length=100,
     )
 
+    major = models.CharField(max_length=20, blank=True,
+                             null=True, verbose_name='전공')
+
+    grade = models.IntegerField(
+        max_length=1, blank=True, null=True, verbose_name="학년")
+
+    phone_number = models.IntegerField(
+        max_length=40, blank=True, null=True, verbose_name='전화번호')
+    student_id = models.IntegerField(
+        max_length=20, blank=True, null=True, verbose_name='학번')
+    # 전공
     email_confirmed = models.BooleanField(default=False, verbose_name='이메일인증')
     email_secret = models.CharField(
         max_length=120, default="", blank=True, verbose_name='유저이름')
@@ -56,10 +68,10 @@ class User(AbstractUser):
                 "emails/verify_email.html", {"secret": secret}
             )
             send_mail("안녕하세요 daljk입니ㅏㄷ",
-                      "donghe1472@gmail.com",
+                      strip_tags(html_message),
                       "dongyu1472@gmail.com",
                       [self.email],
-                      fail_silently=False
+                      html_message=html_message,
                       )
 
             self.save()
