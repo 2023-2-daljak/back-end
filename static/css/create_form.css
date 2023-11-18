@@ -1,6 +1,7 @@
 .create-wrap_second {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .create-wrap_second label {
@@ -15,27 +16,28 @@
 .create-page main {
   width: 700px;
   margin: auto;
-  display: flex;
-  flex-direction: column;
+
 }
 
 .create__title {
   font-size: 30px;
   margin-bottom: 20px;
-  margin-left: 10px;
+  margin-left: 30px;
+  font-weight: bold;
 }
 
 .create {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 700px;
   height: 1200px;
   margin: auto;
   padding: 40px 50px;
-  background-color: white;
+  border-color: var(--color-gray);
   border: 1.5px solid rgba(0, 0, 0, 0.2);
   margin-bottom: 100px;
+  border-radius: 7px;
 }
 
 .create input:focus,
@@ -48,6 +50,8 @@
   border: 1px solid rgba(0, 0, 0, 0.3);
   padding: 5px;
 }
+
+
 
 .create__write {
   border-radius: 8px;
@@ -62,7 +66,7 @@
   color: var(--color-black);
   font-weight: 600;
   font-size: 30px;
-  background-color: var(--color-accent);
+  background-color: var(--color-gray);
   align-items: center;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 4px;
@@ -71,7 +75,12 @@
   padding: 10px;
   display: flex;
   justify-content: center;
-=
+  height: 50px;
+  width: 300px;
+
+}
+.btn-component button{
+  color: var(--color-accent);
 }
 
 .create-wrap {
@@ -88,6 +97,8 @@
 
 .create-wrap_second input {
   width: 80%;
+  
+ 
 }
 
 .create-wrap input:first-child {
@@ -161,14 +172,16 @@
 
 .create-wrap_second input {
   width: 80%;
+  /* height: 50px; */
+  /* width: 65%; */
   height: 50px;
-  width: 65%;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   margin-bottom: 20px;
   transition: all 0.17s ease-in;
   padding: 10px;
   background-color: #fafafa;
+  /* background-color: black; */
 }
 
 .create-wrap input:first-child {
@@ -189,4 +202,41 @@
 
 .create__cont-title {
   margin-bottom: 20px;
+}
+
+
+#create-main{
+ width: 100%;
+}
+.create__content-label{
+  /* background-color: black; */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.create__content-label-wrap{
+  display: flex;
+  align-items: center;
+  gap : 50px;
+  height: fit-content;
+  font-weight: bold;
+}
+.create__content-label-wrap{
+
+}
+
+.create__content-label-wrap select{
+  width: 55%;
+}
+
+#id_meet{
+  width: fit-content;
+}
+.btn_wrap{
+  display: flex;
+  justify-content: center;
+}
+.create-btn button{
+  font-size: 17px;
+  font-weight: 500;
 }

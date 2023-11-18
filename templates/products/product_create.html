@@ -7,21 +7,26 @@
 <body class="create-page">
      {% extends "base.html" %} {% block content%}  
   {% load static %}
-    <main>
+    <main id="create-main">
         <div class="create__title">💻 제품 작성</div>
-
         <form method="POST" class="create" enctype="multipart/form-data">
   {% csrf_token %}
   <div class="create-wrap_second">
     {% for field in form %} 
-  <label for="create__cont-title">{{field.label}} {{field}}</label> 
-  
+    
+    <labelc class="create__content-label" for="create__cont-title">
+      <div class="create__content-label-wrap">
+    {{field.label}} {{field}}
+      </div>
+    </label> 
+
 
  {% endfor %}
-  </div>
+  <div class="btn_wrap">
   <div class="btn-component create-btn">
     <button>create</button>
   </div>
+</div>
 </form>
 
         </div>
