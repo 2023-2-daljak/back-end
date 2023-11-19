@@ -78,10 +78,9 @@
       <section id="work" class="section">
         <div class="max-container">
           <h2 class="title">분야</h2>
-
           <ul class="categories">
             <li>
-              <button class="category category--selected" data-category="all">
+              <button class="category category--selected" data-category="">
                 All <span class="category__count">8</span>
               </button>
             </li>
@@ -108,14 +107,16 @@
           </ul>
           <div>
             <ul class="projects">
-              {% for abc in rooms %}
-
-              <li class="project" data-type="{{abc.filter}}">
+              {% for abcd in rooms %}
+              
+              <li class="project" data-type="{{abcd.filter}}">
+               
                 <a href="#" target="_blank">
-                  <img src="{{abc.get_photo_url}}" class="project__img" />
+                  <p>{{abcd.filter}}</p>
+                  <img src="{{abcd.get_photo_url}}" class="project__img" />
                   <div class="project__metadata">
-                    <h1 class="project__title">{{abc.title}}</h1>
-                    <p>{{abc.content}}</p>
+                    <h1 class="project__title">{{abcd.title}}</h1>
+                    <p>{{abcd.content}}</p>
                   </div>
                 </a>
               </li>

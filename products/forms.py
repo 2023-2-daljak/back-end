@@ -30,7 +30,7 @@ class CreateProductForm(forms.ModelForm):
 
         lables = {
 
-        }
+        }   
 
     def save(self, *args, **kwargs):
         project = super().save(commit=False)

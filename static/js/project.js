@@ -22,7 +22,9 @@ function handleActiveSelection(target) {
 
 function filterProjects(filter) {
   projects.forEach((project) => {
-    if (filter === "all" || filter === project.dataset.type) {
+    console.log(project.dataset.type);
+    if ( filter === project.dataset.type) {
+      console.log(filter);
       project.style.display = "block";
     } else {
       project.style.display = "none";
