@@ -41,12 +41,12 @@
             <ul class="modal__list">
                 {% for pot in mind %}
                     <li>
-                        <input id="a_{{pot.pk}}" name="mind" type="checkbox" value={{pot.pk}} {% if pot.pk|slugify in mind_s %}
+                        <input id="a_{{abc.pk}}" name="mind" type="checkbox" value={{pot.pk}} {% if pot.pk|slugify in mind_s %}
                             checked
                         {% endif %} 
                         
                          />
-                        <label for="a_{{pot.pk}}">{{pot.name}}</label>
+                        <label for="a_{{abc.pk}}">{{pot.name}}</label>
                     </li>
                 {% endfor %}
             </ul>
@@ -57,10 +57,10 @@
             <ul class="modal__list">
                 {% for pot in color %}
                     <li>
-                              <input id="a_{{pot.pk}}" name="color" type="checkbox" value={{pot.pk}} {% if pot.pk|slugify in color_s %}
+                              <input id="a_{{abc.pk}}" name="color" type="checkbox" value={{pot.pk}} {% if pot.pk|slugify in color_s %}
                             checked
                         {% endif %} />
-                        <label for="a_{{pot.pk}}">{{pot.name}}</label>
+                        <label for="a_{{abc.pk}}">{{pot.name}}</label>
                 
                     </li>
                 {% endfor %}
@@ -71,10 +71,10 @@
             <ul class="modal__list">
                 {% for pot in other %}
                     <li>
-                       <input id="a_{{pot.pk}}" name="other" type="checkbox" value={{pot.pk}} {% if pot.pk|slugify in other_s %}
+                       <input id="a_{{abc.pk}}" name="other" type="checkbox" value={{pot.pk}} {% if pot.pk|slugify in other_s %}
                             checked
                         {% endif %}  />
-                        <label for="a_{{pot.pk}}">{{pot.name}}</label>
+                        <label for="a_{{abc.pk}}">{{pot.name}}</label>
                        
                     </li>
                 {% endfor %}
