@@ -1,11 +1,16 @@
 /* Home */
 #home {
   position: relative;
-  background-color: var(--color-primary);
+
   color: var(--color-text);
   padding: 5rem 1rem;
   padding-top: 7rem;
+  background-image: url(././../imgs/home.jpg);
   text-align: center;
+  background-size: cover; /* 이미지를 화면에 꽉 채우도록 설정 */
+  background-position: center; /* 이미지를 가운데 정렬 */
+  background-repeat: no-repeat; /* 이미지 반복 제거 */
+  height: 100vh; /* 화면 전체 높이를 차지하도록 설정 */
 }
 
 .home__avatar {
