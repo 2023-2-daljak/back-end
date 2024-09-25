@@ -37,7 +37,8 @@
 
 ### 2023 종합설계 1등 작품
 
-![2023 종합설계 1등 작품](./images/2023_award_project.png)
+![2023 종합설계 1등 작품]<img src="imgs/as.jpeg" alt="Eniac Club Homepage Main" width="300"/>
+<img src="imgs/ad.jpeg" alt="Eniac Club Homepage Main" width="300"/>
 
 이 이미지는 2023 종합설계 경진대회에서 1등을 수상한 작품입니다. 달작은 실용적이고 혁신적인 디자인으로 수상을 하였으며, 외주 서비스를 통해 다양한 프로젝트를 관리할 수 있습니다.
 
